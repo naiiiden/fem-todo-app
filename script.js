@@ -58,8 +58,10 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
     let newTask = new todoTask(taskInput.value, taskCompleted)
     todoList.push(newTask)
+    document.querySelector('.tasks-container').innerHTML += `<div>task: ${taskInput.value}, completed: ${taskCompleted}</div>`
     taskCompleted = false
     taskCompletedCheckbox.checked = false
+
 })
 
 class todoTask {
