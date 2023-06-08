@@ -18,6 +18,8 @@ todoList.push(new TodoTask('task2', true, ++taskId))
 todoList.push(new TodoTask('task3', false, ++taskId))
 todoList.push(new TodoTask('task4', true, ++taskId))
 
+updateTasksLeft()
+
 function displayTasks(task) { 
     return `
     <div id=task-${task.id} key=${task.id}>
@@ -64,18 +66,19 @@ const taskInput = document.querySelector('#task-input')
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
 
-    let newTask = new TodoTask(taskInput.value, taskCompleted, ++taskId)
+    let newTask = new TodoTask(taskInput.value, false, ++taskId)
     todoList.push(newTask)
     document.querySelector('.tasks-container').innerHTML += `
         <div id=task-${taskId} key=${taskId}>
-            <input type='checkbox' class='complete-task-checkbox' ${taskCompleted ? 'checked' : null}/>    
-            <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>${taskCompleted ? 'completed' : 'not completed'}</span></span>
+            <input type='checkbox' class='complete-task-checkbox'/>    
+            <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
             <button class='delete-task-button'>delete</button>
         </div>`
 
     taskInput.value = ''
 
     document.querySelector('#all').checked = true
+    updateTasksLeft()
 })
 
 document.querySelector('.tasks-container').addEventListener('click', (e) => {
@@ -83,6 +86,7 @@ document.querySelector('.tasks-container').addEventListener('click', (e) => {
         const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
         e.target.parentNode.remove()
+        updateTasksLeft()
     } 
 })
 
@@ -97,3 +101,7 @@ document.querySelector('.tasks-container').addEventListener('change', (e) => {
         }
     }
 })
+
+function updateTasksLeft() {
+    document.querySelector('.total-tasks').textContent = `${todoList.length} items left`
+}
