@@ -80,6 +80,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
     taskCompleted = false
     taskCompletedCheckbox.checked = false
     taskInput.value = ''
+
+    document.querySelector('#all').checked = true
 })
 
 document.querySelector('.tasks-container').addEventListener('click', (e) => {
