@@ -1,62 +1,18 @@
 let taskId = 0;
-const todoList = [
-    {
-        task: 'task1',
-        completed: false,
-        id: taskId++
-    },
-    {
-        task: 'task2',
-        completed: false,
-        id: taskId++
-    },
-    {
-        task: 'task3',
-        completed: true,
-        id: taskId++
-    },
-    {
-        task: 'task4',
-        completed: false,
-        id: taskId++
-    },
-    {
-        task: 'task5',
-        completed: true,
-        id: taskId++
-    },
-    {
-        task: 'task6',
-        completed: false,
-        id: taskId++
-    },
-    {
-        task: 'task7',
-        completed: true,
-        id: taskId++
-    },
-    {
-        task: 'task8',
-        completed: true,
-        id: taskId++
-    },
-]
-
+const todoList = []
 
 const todoListMapped = todoList.map((task, index) => {
     return `
-        <div>
+        <div id=task-${task.id}>
             <input type='checkbox' class='complete-task-checkbox'/>
             <span id=${index} key=${index}>task: ${task.task}, completed: ${task.completed}</span>
             <button>delete</button>
+            ${task.id}
         </div>
         `
 })
 
 document.querySelector('.tasks-container').innerHTML = todoListMapped.join('')
-
-
-
 
 const taskInput = document.querySelector('#task-input')
 const taskCompletedCheckbox = document.querySelector('#task-completed')
@@ -72,17 +28,19 @@ document.querySelector('form').addEventListener('submit', (e) => {
     console.log(taskInput.value)
     console.log('task completed: ', taskCompleted)
 
-    let newTask = new todoTask(taskInput.value, taskCompleted)
+    let newTask = new todoTask(taskInput.value, taskCompleted, taskId++)
     todoList.push(newTask)
     document.querySelector('.tasks-container').innerHTML += `
-        <div>
+        <div id=task-${taskId}>
             <input type='checkbox' class='complete-task-checkbox'/>    
             <span>task: ${taskInput.value}, completed: ${taskCompleted}</span>
             <button>delete</button>
+            ${taskId}
         </div>
         `
     taskCompleted = false
     taskCompletedCheckbox.checked = false
+    taskInput.value = ''
 })
 
 document.querySelectorAll('.complete-task-checkbox').forEach(taskCheckbox => {
@@ -92,9 +50,9 @@ document.querySelectorAll('.complete-task-checkbox').forEach(taskCheckbox => {
 })
 
 class todoTask {
-    constructor(task, completed = false) {
-        this.id = taskId++
+    constructor(task, completed = false, id) {
         this.task = task
         this.completed = completed
+        this.id = id
     }
 }
