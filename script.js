@@ -6,8 +6,12 @@ class TodoTask {
     }
 }
 
+TodoTask.prototype.changeCompleteStatus = function() {
+    this.completed = !this.completed
+}
+
 let todoList = []
-let taskId = 0;
+let taskId = 0
 
 todoList.push(new TodoTask('task1', false, ++taskId))
 todoList.push(new TodoTask('task2', true, ++taskId))
@@ -17,12 +21,10 @@ todoList.push(new TodoTask('task4', true, ++taskId))
 const todoListMapped = todoList.map((task) => {
     return `
         <div id=task-${task.id} key=${task.id}>
-            <input type='checkbox' class='complete-task-checkbox'/>
-            <span >task: ${task.task}, completed: ${task.completed}</span>
+            <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
+            <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
             <button class='delete-task-button'>delete</button>
-            ${task.id}
-        </div>
-        `
+        </div>`
 })
 
 document.querySelector('.tasks-container').innerHTML = todoListMapped.join('')
@@ -37,28 +39,20 @@ taskCompletedCheckbox.addEventListener('change', () => {
 })
 
 document.querySelector('form').addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     let newTask = new TodoTask(taskInput.value, taskCompleted, ++taskId)
     todoList.push(newTask)
     document.querySelector('.tasks-container').innerHTML += `
         <div id=task-${taskId} key=${taskId}>
-            <input type='checkbox' class='complete-task-checkbox'/>    
-            <span>task: ${taskInput.value}, completed: ${taskCompleted}</span>
+            <input type='checkbox' class='complete-task-checkbox' ${taskCompleted ? 'checked' : null}/>    
+            <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>${taskCompleted ? 'completed' : 'not completed'}</span></span>
             <button class='delete-task-button'>delete</button>
-            ${taskId}
-        </div>
-        `
+        </div>`
+
     taskCompleted = false
     taskCompletedCheckbox.checked = false
     taskInput.value = ''
-})
-
-document.querySelectorAll('.complete-task-checkbox').forEach(taskCheckbox => {
-    taskCheckbox.addEventListener('change', (e) => {
-        console.log(e.target.parentNode)
-        // todoList[0].changeComplete()
-    })
 })
 
 document.querySelector('.tasks-container').addEventListener('click', (e) => {
@@ -66,5 +60,14 @@ document.querySelector('.tasks-container').addEventListener('click', (e) => {
         const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
         e.target.parentNode.remove()
+    } 
+})
+
+document.querySelector('.tasks-container').addEventListener('change', (e) => {
+    if (e.target.classList.contains('complete-task-checkbox')) {
+        const taskToComplete = parseInt(e.target.parentNode.getAttribute('key'))
+        const task = todoList.find(task => task.id === taskToComplete) 
+        task.changeCompleteStatus()
+        e.target.parentNode.querySelector('.completed-status-span').textContent = task.completed ? 'completed' : 'not completed'
     }
 })
