@@ -57,13 +57,6 @@ document.querySelectorAll('input[name="complete-status"]').forEach(input => {
 document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
 
 const taskInput = document.querySelector('#task-input')
-const taskCompletedCheckbox = document.querySelector('#task-completed')
-
-let taskCompleted = false
-
-taskCompletedCheckbox.addEventListener('change', () => {
-    taskCompleted = !taskCompleted
-})
 
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
@@ -77,8 +70,6 @@ document.querySelector('form').addEventListener('submit', (e) => {
             <button class='delete-task-button'>delete</button>
         </div>`
 
-    taskCompleted = false
-    taskCompletedCheckbox.checked = false
     taskInput.value = ''
 
     document.querySelector('#all').checked = true
