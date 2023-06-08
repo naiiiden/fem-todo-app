@@ -36,12 +36,15 @@ document.querySelectorAll('input[name="complete-status"]').forEach(input => {
         switch (e.target.getAttribute('id')) {
             case 'active':
                 todoListDisplay = todoList.filter(task => task.completed === false).map((task) => {
+                    console.log('active: ', todoListDisplay.length)
+                    console.log('tasks:', task)
                     return displayTasks(task)
                 })
                 document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
                 break;
             case 'completed':
                 todoListDisplay = todoList.filter(task => task.completed === true).map((task) => {
+                    console.log('completed: ', todoListDisplay.length)
                     return displayTasks(task)
                 })
                 document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
@@ -89,5 +92,8 @@ document.querySelector('.tasks-container').addEventListener('change', (e) => {
         const task = todoList.find(task => task.id === taskToComplete) 
         task.changeCompleteStatus()
         e.target.parentNode.querySelector('.completed-status-span').textContent = task.completed ? 'completed' : 'not completed'
+        if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
+            e.target.parentNode.remove()
+        }
     }
 })
