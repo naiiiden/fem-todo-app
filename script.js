@@ -6,21 +6,20 @@ class TodoTask {
     }
 }
 
+let todoList = []
 let taskId = 0;
-const todoList = []
 
-todoList.push(new TodoTask('task1', false, taskId++))
-todoList.push(new TodoTask('task2', true, taskId++))
-todoList.push(new TodoTask('task3', false, taskId++))
-todoList.push(new TodoTask('task4', true, taskId++))
+todoList.push(new TodoTask('task1', false, ++taskId))
+todoList.push(new TodoTask('task2', true, ++taskId))
+todoList.push(new TodoTask('task3', false, ++taskId))
+todoList.push(new TodoTask('task4', true, ++taskId))
 
-const todoListMapped = todoList.map((task, index) => {
+const todoListMapped = todoList.map((task) => {
     return `
-        <div id=task-${task.id}>
+        <div id=task-${task.id} key=${task.id}>
             <input type='checkbox' class='complete-task-checkbox'/>
-            <span id=${index} key=${index}>task: ${task.task}, completed: ${task.completed}</span>
-            <button class='change-complete-button'>change complete status</button>
-            <button>delete</button>
+            <span >task: ${task.task}, completed: ${task.completed}</span>
+            <button class='delete-task-button'>delete</button>
             ${task.id}
         </div>
         `
@@ -39,17 +38,14 @@ taskCompletedCheckbox.addEventListener('change', () => {
 
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(taskInput.value)
-    console.log('task completed: ', taskCompleted)
 
-    let newTask = new TodoTask(taskInput.value, taskCompleted, taskId++)
+    let newTask = new TodoTask(taskInput.value, taskCompleted, ++taskId)
     todoList.push(newTask)
     document.querySelector('.tasks-container').innerHTML += `
-        <div id=task-${taskId}>
+        <div id=task-${taskId} key=${taskId}>
             <input type='checkbox' class='complete-task-checkbox'/>    
             <span>task: ${taskInput.value}, completed: ${taskCompleted}</span>
-            <button class='change-complete-button'>change complete status</button>
-            <button>delete</button>
+            <button class='delete-task-button'>delete</button>
             ${taskId}
         </div>
         `
@@ -61,5 +57,14 @@ document.querySelector('form').addEventListener('submit', (e) => {
 document.querySelectorAll('.complete-task-checkbox').forEach(taskCheckbox => {
     taskCheckbox.addEventListener('change', (e) => {
         console.log(e.target.parentNode)
+        // todoList[0].changeComplete()
     })
+})
+
+document.querySelector('.tasks-container').addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-task-button')) {
+        const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
+        todoList = todoList.filter(task => task.id !== taskToDeleteById)
+        e.target.parentNode.remove()
+    }
 })
