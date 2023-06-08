@@ -18,51 +18,37 @@ todoList.push(new TodoTask('task2', true, ++taskId))
 todoList.push(new TodoTask('task3', false, ++taskId))
 todoList.push(new TodoTask('task4', true, ++taskId))
 
-let todoListDisplay = todoList.map((task) => {
+function displayTasks(task) { 
     return `
-        <div id=task-${task.id} key=${task.id}>
-            <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
-            <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-            <button class='delete-task-button'>delete</button>
-        </div>`
+    <div id=task-${task.id} key=${task.id}>
+        <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
+        <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
+        <button class='delete-task-button'>delete</button>
+    </div>`
+}
+
+let todoListDisplay = todoList.map((task) => {
+    return displayTasks(task)
 })
 
 document.querySelectorAll('input[name="complete-status"]').forEach(input => {
     input.addEventListener('change', (e) => {
         switch (e.target.getAttribute('id')) {
             case 'active':
-                console.log('show active')
                 todoListDisplay = todoList.filter(task => task.completed === false).map((task) => {
-                    return `
-                        <div id=task-${task.id} key=${task.id}>
-                            <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
-                            <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-                            <button class='delete-task-button'>delete</button>
-                        </div>`
+                    return displayTasks(task)
                 })
                 document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
                 break;
             case 'completed':
-                console.log('show completed')
                 todoListDisplay = todoList.filter(task => task.completed === true).map((task) => {
-                    return `
-                        <div id=task-${task.id} key=${task.id}>
-                            <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
-                            <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-                            <button class='delete-task-button'>delete</button>
-                        </div>`
+                    return displayTasks(task)
                 })
                 document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
                 break;
             default:
-                console.log('show all')
                 todoListDisplay = todoList.map((task) => {
-                    return `
-                        <div id=task-${task.id} key=${task.id}>
-                            <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
-                            <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-                            <button class='delete-task-button'>delete</button>
-                        </div>`
+                    return displayTasks(task)
                 })
                 document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
         }
