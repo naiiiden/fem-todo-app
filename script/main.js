@@ -1,20 +1,8 @@
 import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, displayTasks } from "./functions.js"
+import { TodoTask } from "./classes.js"
 
 let todoList = []
 let taskId = 0
-
-
-class TodoTask {
-    constructor(task, completed = false, id) {
-        this.task = task
-        this.completed = completed
-        this.id = id !== null ? id : ++taskId
-    }
-}
-
-TodoTask.prototype.changeCompleteStatus = function() {
-    this.completed = !this.completed
-}
 
 if (localStorage.getItem('todoList')) {
     todoList = JSON.parse(localStorage.getItem('todoList'))
