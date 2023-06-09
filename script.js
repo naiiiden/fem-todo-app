@@ -31,26 +31,26 @@ function displayTasks(task) {
 
 let todoListDisplay = todoList.map((task) => displayTasks(task))
 
-document.querySelectorAll('input[name="complete-status"]').forEach(input => {
-    input.addEventListener('change', (e) => {
-        switch (e.target.getAttribute('id')) {
-            case 'active':
-                todoListDisplay = todoList.filter(task => task.completed === false).map((task) => displayTasks(task))
-                tasksContainer.innerHTML = todoListDisplay.join('')
-                break;
-            case 'completed':
-                todoListDisplay = todoList.filter(task => task.completed === true).map((task) => displayTasks(task))
-                tasksContainer.innerHTML = todoListDisplay.join('')
-                break;
-            default:
-                todoListDisplay = todoList.map((task) => displayTasks(task))
-                tasksContainer.innerHTML = todoListDisplay.join('')
-        }
-    })
-})
-
 let tasksContainer = document.querySelector('.tasks-container')
 tasksContainer.innerHTML = todoListDisplay.join('')
+
+document.body.addEventListener('change', (e) => {
+  if (e.target.matches('input[name="complete-status"]')) {
+    switch (e.target.getAttribute('id')) {
+      case 'active':
+        todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task));
+        tasksContainer.innerHTML = todoListDisplay.join('');
+        break;
+      case 'completed':
+        todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task));
+        tasksContainer.innerHTML = todoListDisplay.join('');
+        break;
+      default:
+        todoListDisplay = todoList.map(task => displayTasks(task));
+        tasksContainer.innerHTML = todoListDisplay.join('');
+    }
+  }
+});
 
 const taskInput = document.querySelector('#task-input')
 
