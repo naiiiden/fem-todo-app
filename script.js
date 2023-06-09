@@ -58,7 +58,14 @@ document.querySelector('form').addEventListener('submit', (e) => {
     const errorText = document.querySelector('.error-indicator')
 
     if (taskInput.value !== '') {
-        errorText.textContent = ''
+        if (todoList.some(task => task.task === taskInput.value)) {
+            errorText.textContent = 'cannot add duplicate tasks'
+            setTimeout(() => {
+                errorText.textContent = ''
+            }, 3000)
+            return
+        }
+
         let newTask = new TodoTask(taskInput.value, false, ++taskId)
         todoList.push(newTask)
         tasksContainer.innerHTML += `
@@ -76,8 +83,10 @@ document.querySelector('form').addEventListener('submit', (e) => {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
             errorText.textContent = ''
-        }, 5000)
+        }, 3000)
     }
+
+    
 })
 
 tasksContainer.addEventListener('click', (e) => {
