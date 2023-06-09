@@ -1,6 +1,11 @@
 let todoList = []
 let taskId = 0
 
+if (localStorage.getItem('todoList')) {
+    todoList = JSON.parse(localStorage.getItem('todoList'))
+    taskId = todoList.length
+}
+
 class TodoTask {
     constructor(task, completed = false, id) {
         this.task = task
@@ -12,11 +17,6 @@ class TodoTask {
 TodoTask.prototype.changeCompleteStatus = function() {
     this.completed = !this.completed
 }
-
-todoList.push(new TodoTask('task1', false, ++taskId))
-todoList.push(new TodoTask('task2', true, ++taskId))
-todoList.push(new TodoTask('task3', false, ++taskId))
-todoList.push(new TodoTask('task4', true, ++taskId))
 
 updateTasksLeft()
 
@@ -68,6 +68,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
         let newTask = new TodoTask(taskInput.value, false, ++taskId)
         todoList.push(newTask)
+        localStorage.setItem('todoList', JSON.stringify(todoList))
         tasksContainer.innerHTML += `
             <div id=task-${taskId} key=${taskId}>
                 <input type='checkbox' class='complete-task-checkbox'/>    
@@ -85,14 +86,13 @@ document.querySelector('form').addEventListener('submit', (e) => {
             errorText.textContent = ''
         }, 3000)
     }
-
-    
 })
 
 tasksContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-task-button')) {
         const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
+        localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         updateTasksLeft()
     } 
@@ -102,6 +102,7 @@ tasksContainer.addEventListener('change', (e) => {
     if (e.target.classList.contains('complete-task-checkbox')) {
         const taskToComplete = parseInt(e.target.parentNode.getAttribute('key'))
         const task = todoList.find(task => task.id === taskToComplete) 
+        localStorage.setItem('todoList', JSON.stringify(todoList))
         task.changeCompleteStatus()
         e.target.parentNode.querySelector('.completed-status-span').textContent = task.completed ? 'completed' : 'not completed'
         if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
