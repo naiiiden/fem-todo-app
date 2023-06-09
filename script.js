@@ -5,7 +5,7 @@ class TodoTask {
     constructor(task, completed = false, id) {
         this.task = task
         this.completed = completed
-        this.id = id
+        this.id = id !== null ? id : ++taskId
     }
 }
 
@@ -15,7 +15,7 @@ TodoTask.prototype.changeCompleteStatus = function() {
 
 if (localStorage.getItem('todoList')) {
     todoList = JSON.parse(localStorage.getItem('todoList'))
-    taskId = Math.max(...todoList.map(task => task.id)) + 1
+    taskId = Math.max(...todoList.map((task) => task.id), 0) + 1
     todoList.forEach(task => {
         Object.setPrototypeOf(task, TodoTask.prototype)
     })
