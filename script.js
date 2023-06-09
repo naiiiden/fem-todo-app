@@ -106,4 +106,8 @@ function updateTasksLeft() {
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
     console.log(todoList)
+    document.querySelectorAll('.complete-task-checkbox:checked').forEach(element => {
+        element.parentNode.remove();
+    });
+    updateTasksLeft()
 })
