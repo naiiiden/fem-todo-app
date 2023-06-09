@@ -40,14 +40,17 @@ document.body.addEventListener('change', (e) => {
       case 'active':
         todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
+        noTasksDisplay()
         break
       case 'completed':
         todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
+        noTasksDisplay()
         break
       default:
         todoListDisplay = todoList.map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
+        noTasksDisplay()
     }
   }
 })
@@ -79,6 +82,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         taskInput.value = ''
         document.querySelector('#all').checked = true
         updateTasksAndClearButtonDisableIfEmpty()
+        noTasksDisplay()
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -94,6 +98,7 @@ tasksContainer.addEventListener('click', (e) => {
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         updateTasksAndClearButtonDisableIfEmpty()
+        noTasksDisplay()
     } 
 })
 
@@ -108,6 +113,7 @@ tasksContainer.addEventListener('change', (e) => {
             if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
                 e.target.parentNode.remove()
             }
+        noTasksDisplay();
         }
     }
 })
@@ -121,6 +127,7 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
         element.parentNode.remove()
     })
     updateTasksAndClearButtonDisableIfEmpty()
+    noTasksDisplay()
 })
 
 function updateTasksAndClearButtonDisableIfEmpty() {
@@ -133,3 +140,34 @@ function updateTasksAndClearButtonDisableIfEmpty() {
         clearButton.disabled = false
     }
 }
+
+function noTasksDisplay() {
+    const emptyTaskList = document.querySelector('.empty-list-message')
+    const activeRadioBtn = document.querySelector('#active')
+    const completeRadioBtn = document.querySelector('#completed')
+  
+    if (todoList.length === 0 || (activeRadioBtn.checked && !todoList.some(task => !task.completed)) || (completeRadioBtn.checked && !todoList.some(task => task.completed))) {
+      emptyTaskList.style.display = 'block'
+      tasksContainer.innerHTML = ''
+      if (activeRadioBtn.checked) {
+        emptyTaskList.textContent = 'no active tasks'
+      } else if (completeRadioBtn.checked) {
+        emptyTaskList.textContent = 'no completed tasks'
+      } else {
+        emptyTaskList.textContent = 'no tasks'
+      }
+    } else {
+      emptyTaskList.style.display = 'none'
+      if (activeRadioBtn.checked) {
+        todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
+      } else if (completeRadioBtn.checked) {
+        todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
+      } else {
+        todoListDisplay = todoList.map(task => displayTasks(task))
+      }
+      tasksContainer.innerHTML = todoListDisplay.join('')
+    }
+}
+  
+noTasksDisplay()
+  
