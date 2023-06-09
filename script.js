@@ -1,3 +1,6 @@
+let todoList = []
+let taskId = 0
+
 class TodoTask {
     constructor(task, completed = false, id) {
         this.task = task
@@ -9,9 +12,6 @@ class TodoTask {
 TodoTask.prototype.changeCompleteStatus = function() {
     this.completed = !this.completed
 }
-
-let todoList = []
-let taskId = 0
 
 todoList.push(new TodoTask('task1', false, ++taskId))
 todoList.push(new TodoTask('task2', true, ++taskId))
@@ -30,7 +30,6 @@ function displayTasks(task) {
 }
 
 let todoListDisplay = todoList.map((task) => displayTasks(task))
-
 let tasksContainer = document.querySelector('.tasks-container')
 tasksContainer.innerHTML = todoListDisplay.join('')
 
@@ -52,11 +51,10 @@ document.body.addEventListener('change', (e) => {
   }
 });
 
-const taskInput = document.querySelector('#task-input')
-
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
 
+    const taskInput = document.querySelector('#task-input')
     let newTask = new TodoTask(taskInput.value, false, ++taskId)
     todoList.push(newTask)
     tasksContainer.innerHTML += `
