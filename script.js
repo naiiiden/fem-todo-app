@@ -83,6 +83,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     
         document.querySelector('#all').checked = true
         updateTasksLeft()
+        clearButtonDisableIfEmpty()
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -98,6 +99,7 @@ tasksContainer.addEventListener('click', (e) => {
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         updateTasksLeft()
+        clearButtonDisableIfEmpty()
     } 
 })
 
@@ -120,6 +122,18 @@ function updateTasksLeft() {
     document.querySelector('.total-tasks').textContent = `${todoList.length} items left`
 }
 
+let clearButton = document.querySelector('.clear-completed')
+
+function clearButtonDisableIfEmpty() {
+    if (todoList.length === 0) {
+        clearButton.disabled = true
+    } else {
+        clearButton.disabled = false
+    }
+}
+
+clearButtonDisableIfEmpty()
+
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
     localStorage.setItem('todoList', JSON.stringify(todoList))
@@ -127,4 +141,5 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
         element.parentNode.remove()
     })
     updateTasksLeft()
+    clearButtonDisableIfEmpty()
 })
