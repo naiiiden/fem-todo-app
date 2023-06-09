@@ -29,34 +29,28 @@ function displayTasks(task) {
     </div>`
 }
 
-let todoListDisplay = todoList.map((task) => {
-    return displayTasks(task)
-})
+let todoListDisplay = todoList.map((task) => displayTasks(task))
 
 document.querySelectorAll('input[name="complete-status"]').forEach(input => {
     input.addEventListener('change', (e) => {
         switch (e.target.getAttribute('id')) {
             case 'active':
-                todoListDisplay = todoList.filter(task => task.completed === false).map((task) => {
-                    return displayTasks(task)
-                })
-                document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
+                todoListDisplay = todoList.filter(task => task.completed === false).map((task) => displayTasks(task))
+                tasksContainer.innerHTML = todoListDisplay.join('')
                 break;
             case 'completed':
-                todoListDisplay = todoList.filter(task => task.completed === true).map((task) => {
-                    return displayTasks(task)
-                })
-                document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
+                todoListDisplay = todoList.filter(task => task.completed === true).map((task) => displayTasks(task))
+                tasksContainer.innerHTML = todoListDisplay.join('')
                 break;
             default:
-                todoListDisplay = todoList.map((task) => {
-                    return displayTasks(task)
-                })
-                document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
+                todoListDisplay = todoList.map((task) => displayTasks(task))
+                tasksContainer.innerHTML = todoListDisplay.join('')
         }
     })
 })
-document.querySelector('.tasks-container').innerHTML = todoListDisplay.join('')
+
+let tasksContainer = document.querySelector('.tasks-container')
+tasksContainer.innerHTML = todoListDisplay.join('')
 
 const taskInput = document.querySelector('#task-input')
 
@@ -65,7 +59,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
     let newTask = new TodoTask(taskInput.value, false, ++taskId)
     todoList.push(newTask)
-    document.querySelector('.tasks-container').innerHTML += `
+    tasksContainer.innerHTML += `
         <div id=task-${taskId} key=${taskId}>
             <input type='checkbox' class='complete-task-checkbox'/>    
             <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
@@ -78,7 +72,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     updateTasksLeft()
 })
 
-document.querySelector('.tasks-container').addEventListener('click', (e) => {
+tasksContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-task-button')) {
         const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
@@ -87,7 +81,7 @@ document.querySelector('.tasks-container').addEventListener('click', (e) => {
     } 
 })
 
-document.querySelector('.tasks-container').addEventListener('change', (e) => {
+tasksContainer.addEventListener('change', (e) => {
     if (e.target.classList.contains('complete-task-checkbox')) {
         const taskToComplete = parseInt(e.target.parentNode.getAttribute('key'))
         const task = todoList.find(task => task.id === taskToComplete) 
