@@ -21,8 +21,6 @@ if (localStorage.getItem('todoList')) {
     })
 }
 
-updateTasksLeft()
-
 function displayTasks(task) { 
     return `
     <div id=task-${task.id} key=${task.id}>
@@ -78,12 +76,9 @@ document.querySelector('form').addEventListener('submit', (e) => {
                 <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
                 <button class='delete-task-button'>delete</button>
             </div>`
-    
         taskInput.value = ''
-    
         document.querySelector('#all').checked = true
-        updateTasksLeft()
-        clearButtonDisableIfEmpty()
+        updateTasksAndClearButtonDisableIfEmpty()
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -98,8 +93,7 @@ tasksContainer.addEventListener('click', (e) => {
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
-        updateTasksLeft()
-        clearButtonDisableIfEmpty()
+        updateTasksAndClearButtonDisableIfEmpty()
     } 
 })
 
@@ -118,21 +112,7 @@ tasksContainer.addEventListener('change', (e) => {
     }
 })
 
-function updateTasksLeft() {
-    document.querySelector('.total-tasks').textContent = `${todoList.length} items left`
-}
-
-let clearButton = document.querySelector('.clear-completed')
-
-function clearButtonDisableIfEmpty() {
-    if (todoList.length === 0) {
-        clearButton.disabled = true
-    } else {
-        clearButton.disabled = false
-    }
-}
-
-clearButtonDisableIfEmpty()
+updateTasksAndClearButtonDisableIfEmpty()
 
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
@@ -140,6 +120,16 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
     document.querySelectorAll('.complete-task-checkbox:checked').forEach(element => {
         element.parentNode.remove()
     })
-    updateTasksLeft()
-    clearButtonDisableIfEmpty()
+    updateTasksAndClearButtonDisableIfEmpty()
 })
+
+function updateTasksAndClearButtonDisableIfEmpty() {
+    document.querySelector('.total-tasks').textContent = `${todoList.length} items left`
+    let clearButton = document.querySelector('.clear-completed')
+
+    if (todoList.length === 0) {
+        clearButton.disabled = true
+    } else {
+        clearButton.disabled = false
+    }
+}
