@@ -1,5 +1,8 @@
+import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, displayTasks } from "./functions.js"
+
 let todoList = []
 let taskId = 0
+
 
 class TodoTask {
     constructor(task, completed = false, id) {
@@ -21,15 +24,6 @@ if (localStorage.getItem('todoList')) {
     })
 }
 
-function displayTasks(task) { 
-    return `
-    <div id=task-${task.id} key=${task.id}>
-        <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
-        <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-        <button class='delete-task-button'>delete</button>
-    </div>`
-}
-
 let todoListDisplay = todoList.map((task) => displayTasks(task))
 let tasksContainer = document.querySelector('.tasks-container')
 tasksContainer.innerHTML = todoListDisplay.join('')
@@ -40,17 +34,17 @@ document.body.addEventListener('change', (e) => {
       case 'active':
         todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
-        noTasksDisplay()
+        noTasksDisplay(todoList, tasksContainer)
         break
       case 'completed':
         todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
-        noTasksDisplay()
+        noTasksDisplay(todoList, tasksContainer)
         break
       default:
         todoListDisplay = todoList.map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
-        noTasksDisplay()
+        noTasksDisplay(todoList, tasksContainer)
     }
   }
 })
@@ -81,8 +75,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
             </div>`
         taskInput.value = ''
         document.querySelector('#all').checked = true
-        updateTasksAndClearButtonDisableIfEmpty()
-        noTasksDisplay()
+        updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+        noTasksDisplay(todoList, tasksContainer)
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -97,8 +91,8 @@ tasksContainer.addEventListener('click', (e) => {
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
-        updateTasksAndClearButtonDisableIfEmpty()
-        noTasksDisplay()
+        updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+        noTasksDisplay(todoList, tasksContainer)
     } 
 })
 
@@ -113,12 +107,12 @@ tasksContainer.addEventListener('change', (e) => {
             if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
                 e.target.parentNode.remove()
             }
-        noTasksDisplay();
+        noTasksDisplay(todoList, tasksContainer);
         }
     }
 })
 
-updateTasksAndClearButtonDisableIfEmpty()
+updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
 
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
@@ -126,48 +120,9 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
     document.querySelectorAll('.complete-task-checkbox:checked').forEach(element => {
         element.parentNode.remove()
     })
-    updateTasksAndClearButtonDisableIfEmpty()
-    noTasksDisplay()
+    updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+    noTasksDisplay(todoList, tasksContainer)
 })
-
-function updateTasksAndClearButtonDisableIfEmpty() {
-    document.querySelector('.total-tasks').textContent = `${todoList.length} items left`
-    let clearButton = document.querySelector('.clear-completed')
-
-    if (todoList.length === 0) {
-        clearButton.disabled = true
-    } else {
-        clearButton.disabled = false
-    }
-}
-
-function noTasksDisplay() {
-    const emptyTaskList = document.querySelector('.empty-list-message')
-    const activeRadioBtn = document.querySelector('#active')
-    const completeRadioBtn = document.querySelector('#completed')
   
-    if (todoList.length === 0 || (activeRadioBtn.checked && !todoList.some(task => !task.completed)) || (completeRadioBtn.checked && !todoList.some(task => task.completed))) {
-      emptyTaskList.style.display = 'block'
-      tasksContainer.innerHTML = ''
-      if (activeRadioBtn.checked) {
-        emptyTaskList.textContent = 'no active tasks'
-      } else if (completeRadioBtn.checked) {
-        emptyTaskList.textContent = 'no completed tasks'
-      } else {
-        emptyTaskList.textContent = 'no tasks'
-      }
-    } else {
-      emptyTaskList.style.display = 'none'
-      if (activeRadioBtn.checked) {
-        todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
-      } else if (completeRadioBtn.checked) {
-        todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
-      } else {
-        todoListDisplay = todoList.map(task => displayTasks(task))
-      }
-      tasksContainer.innerHTML = todoListDisplay.join('')
-    }
-}
-  
-noTasksDisplay()
+noTasksDisplay(todoList, tasksContainer)
   
