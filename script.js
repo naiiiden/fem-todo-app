@@ -55,19 +55,29 @@ document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
 
     const taskInput = document.querySelector('#task-input')
-    let newTask = new TodoTask(taskInput.value, false, ++taskId)
-    todoList.push(newTask)
-    tasksContainer.innerHTML += `
-        <div id=task-${taskId} key=${taskId}>
-            <input type='checkbox' class='complete-task-checkbox'/>    
-            <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
-            <button class='delete-task-button'>delete</button>
-        </div>`
+    const errorText = document.querySelector('.error-indicator')
 
-    taskInput.value = ''
-
-    document.querySelector('#all').checked = true
-    updateTasksLeft()
+    if (taskInput.value !== '') {
+        errorText.textContent = ''
+        let newTask = new TodoTask(taskInput.value, false, ++taskId)
+        todoList.push(newTask)
+        tasksContainer.innerHTML += `
+            <div id=task-${taskId} key=${taskId}>
+                <input type='checkbox' class='complete-task-checkbox'/>    
+                <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
+                <button class='delete-task-button'>delete</button>
+            </div>`
+    
+        taskInput.value = ''
+    
+        document.querySelector('#all').checked = true
+        updateTasksLeft()
+    } else {
+        errorText.textContent = 'task text cannot be empty'
+        setTimeout(() => {
+            errorText.textContent = ''
+        }, 5000)
+    }
 })
 
 tasksContainer.addEventListener('click', (e) => {
