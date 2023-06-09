@@ -1,9 +1,16 @@
 import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, displayTasks } from "./functions.js"
 import { TodoTask } from "./classes.js"
-import { getLocalStorage, setLocalStorage } from "./localStorage.js"
 
-let { todoList, taskId } = getLocalStorage();
-getLocalStorage()
+let todoList = []
+let taskId = 0
+
+if (localStorage.getItem('todoList')) {
+    todoList = JSON.parse(localStorage.getItem('todoList'))
+    taskId = Math.max(...todoList.map((task) => task.id), 0) + 1
+    todoList.forEach(task => {
+        Object.setPrototypeOf(task, TodoTask.prototype)
+    })
+}
 
 let todoListDisplay = todoList.map((task) => displayTasks(task))
 let tasksContainer = document.querySelector('.tasks-container')
@@ -47,7 +54,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
         let newTask = new TodoTask(taskInput.value, false, ++taskId)
         todoList.push(newTask)
-        setLocalStorage(todoList)
+        localStorage.setItem('todoList', JSON.stringify(todoList))
         tasksContainer.innerHTML += `
             <div id=task-${taskId} key=${taskId}>
                 <input type='checkbox' class='complete-task-checkbox'/>    
@@ -70,7 +77,7 @@ tasksContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-task-button')) {
         const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
-        setLocalStorage(todoList)
+        localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
         noTasksDisplay(todoList, tasksContainer)
@@ -83,7 +90,7 @@ tasksContainer.addEventListener('change', (e) => {
         const taskIndex = todoList.findIndex(task => task.id === taskToComplete)
         if (taskIndex !== -1) {
             todoList[taskIndex].changeCompleteStatus()
-            setLocalStorage(todoList)
+            localStorage.setItem('todoList', JSON.stringify(todoList))
             e.target.parentNode.querySelector('.completed-status-span').textContent = todoList[taskIndex].completed ? 'completed' : 'not completed'
             if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
                 e.target.parentNode.remove()
@@ -97,7 +104,7 @@ updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
 
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
-    setLocalStorage(todoList)
+    localStorage.setItem('todoList', JSON.stringify(todoList))
     document.querySelectorAll('.complete-task-checkbox:checked').forEach(element => {
         element.parentNode.remove()
     })
