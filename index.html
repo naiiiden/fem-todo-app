@@ -15,7 +15,7 @@
     </button>
   </header>
   <main>
-    <form>
+    <form id="add-task-form">
       <input type="text" id="task-input" aria-label="Create a new todo" placeholder="Create a new todo">
     </form>
     <p class="error-indicator" style="color: red; font-weight: bold"></p>
@@ -25,7 +25,8 @@
       <p class="total-tasks"></p>
       <button class="clear-completed">clear completed</button>
     </div>
-    <fieldset>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset -->
+    <fieldset form="add-task-form">
       <legend>Filter todos</legend>
       <label for="all">
         <input type="radio" id="all" name="complete-status" checked/>
