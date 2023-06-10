@@ -14,39 +14,33 @@
       <img src="images/icon-moon.svg" alt="Toggle dark mode">
     </button>
   </header>
-
   <main>
     <form>
       <input type="text" id="task-input" aria-label="Create a new todo" placeholder="Create a new todo">
-      <p class="error-indicator" style="color: red; font-weight: bold"></p>
-      
-      <p class="empty-list-message"></p>
-      
-      <div class="tasks-container"></div>
-
-      <div class="tasks-button-container">
-        <p class="total-tasks"></p>
-        <button class="clear-completed">clear completed</button>
-      </div>
-
-      <fieldset>
-        <legend>Filter todos</legend>
-        <label for="all">
-          <input type="radio" id="all" name="complete-status" checked/>
-          All
-        </label>
-        <label for="active">
-          <input type="radio" id="active" name="complete-status"/>
-          Active
-        </label>
-        <label for="completed">
-          <input type="radio" id="completed" name="complete-status"/>
-          Completed
-        </label>
-      </fieldset>
     </form>
+    <p class="error-indicator" style="color: red; font-weight: bold"></p>
+    <p class="empty-list-message"></p>
+    <div class="tasks-container"></div>
+    <div class="tasks-button-container">
+      <p class="total-tasks"></p>
+      <button class="clear-completed">clear completed</button>
+    </div>
+    <fieldset>
+      <legend>Filter todos</legend>
+      <label for="all">
+        <input type="radio" id="all" name="complete-status" checked/>
+        All
+      </label>
+      <label for="active">
+        <input type="radio" id="active" name="complete-status"/>
+        Active
+      </label>
+      <label for="completed">
+        <input type="radio" id="completed" name="complete-status"/>
+        Completed
+      </label>
+    </fieldset>
   </main>
-
   <script src="script/main.js" type="module"></script>
 </body>
 </html>

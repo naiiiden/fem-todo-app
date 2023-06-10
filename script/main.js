@@ -16,7 +16,7 @@ let todoListDisplay = todoList.map((task) => displayTasks(task))
 let tasksContainer = document.querySelector('.tasks-container')
 tasksContainer.innerHTML = todoListDisplay.join('')
 
-document.body.addEventListener('change', (e) => {
+tasksContainer.addEventListener('change', (e) => {
   if (e.target.matches('input[name="complete-status"]')) {
     switch (e.target.getAttribute('id')) {
       case 'active':
@@ -38,6 +38,7 @@ document.body.addEventListener('change', (e) => {
 })
 
 document.querySelector('form').addEventListener('submit', (e) => {
+    console.log(todoList)
     e.preventDefault()
 
     const taskInput = document.querySelector('#task-input')
