@@ -16,15 +16,15 @@ let todoListDisplay = todoList.map((task) => displayTasks(task))
 let tasksContainer = document.querySelector('.tasks-container')
 tasksContainer.innerHTML = todoListDisplay.join('')
 
-tasksContainer.addEventListener('change', (e) => {
+document.querySelector('fieldset').addEventListener('change', (e) => {
   if (e.target.matches('input[name="complete-status"]')) {
     switch (e.target.getAttribute('id')) {
-      case 'active':
+      case 'Active':
         todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
         noTasksDisplay(todoList, tasksContainer)
         break
-      case 'completed':
+      case 'Completed':
         todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
         tasksContainer.innerHTML = todoListDisplay.join('')
         noTasksDisplay(todoList, tasksContainer)
