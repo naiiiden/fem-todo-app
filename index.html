@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Todo app</title>
 </head>
 <body>
@@ -16,30 +14,37 @@
     </button>
   </header>
 
-  
-  <form>
-    <input type="text" id="task-input">
-  </form>
-  <p class="error-indicator" style="color: red; font-weight: bold"></p>
-  <div class="empty-list-message"></div>
-  <div class="tasks-container">
+  <main>
+    <form>
+      <input type="text" id="task-input" aria-label="Create a new todo" placeholder="Create a new todo">
+      <p class="error-indicator" style="color: red; font-weight: bold"></p>
+      
+      <p class="empty-list-message"></p>
+      
+      <div class="tasks-container"></div>
 
-  </div>
+      <div class="tasks-button-container">
+        <p class="total-tasks"></p>
+        <button class="clear-completed">clear completed</button>
+      </div>
 
-  <label for="">
-    <input type="radio" id="all" name="complete-status" checked/>
-    all
-  </label>
-  <label for="">
-    <input type="radio" id="active" name="complete-status"/>
-    active
-  </label>
-  <label for="">
-    <input type="radio" id="completed" name="complete-status"/>
-    completed
-  </label>
-  <p class="total-tasks"></p>
-  <button class="clear-completed">clear completed</button>
+      <fieldset>
+        <legend>Filter todos</legend>
+        <label for="all">
+          <input type="radio" id="all" name="complete-status" checked/>
+          All
+        </label>
+        <label for="active">
+          <input type="radio" id="active" name="complete-status"/>
+          Active
+        </label>
+        <label for="completed">
+          <input type="radio" id="completed" name="complete-status"/>
+          Completed
+        </label>
+      </fieldset>
+    </form>
+  </main>
 
   <script src="script/main.js" type="module"></script>
 </body>
