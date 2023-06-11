@@ -1,4 +1,4 @@
-import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, displayTasks } from "./functions.js"
+import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, renderTask } from "./functions.js"
 import { TodoTask } from "./classes.js"
 
 let todoList = []
@@ -12,26 +12,28 @@ if (localStorage.getItem('todoList')) {
     })
 }
 
-let todoListDisplay = todoList.map((task) => displayTasks(task))
 let tasksContainer = document.querySelector('.tasks-container')
-tasksContainer.innerHTML = todoListDisplay.join('')
+
+todoList.forEach(task => {
+    renderTask(task, tasksContainer)
+})
 
 document.querySelector('fieldset').addEventListener('change', (e) => {
   if (e.target.matches('input[name="complete-status"]')) {
     switch (e.target.getAttribute('id')) {
       case 'Active':
         todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
-        tasksContainer.innerHTML = todoListDisplay.join('')
+        // tasksContainer.innerHTML = todoListDisplay.join('')
         noTasksDisplay(todoList, tasksContainer)
         break
       case 'Completed':
         todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
-        tasksContainer.innerHTML = todoListDisplay.join('')
+        // tasksContainer.innerHTML = todoListDisplay.join('')
         noTasksDisplay(todoList, tasksContainer)
         break
       default:
         todoListDisplay = todoList.map(task => displayTasks(task))
-        tasksContainer.innerHTML = todoListDisplay.join('')
+        // tasksContainer.innerHTML = todoListDisplay.join('')
         noTasksDisplay(todoList, tasksContainer)
     }
   }

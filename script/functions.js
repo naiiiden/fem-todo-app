@@ -16,13 +16,13 @@ export function noTasksDisplay(todoList, tasksContainer, todoListDisplay) {
     } else {
       emptyTaskList.style.display = 'none'
       if (activeRadioBtn.checked) {
-        todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
+        todoListDisplay = todoList.filter(task => !task.completed).map(task => renderTask(task, tasksContainer))
       } else if (completeRadioBtn.checked) {
-        todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
+        todoListDisplay = todoList.filter(task => task.completed).map(task => renderTask(task, tasksContainer))
       } else {
-        todoListDisplay = todoList.map(task => displayTasks(task))
+        todoListDisplay = todoList.map(task => renderTask(task, tasksContainer))
       }
-      tasksContainer.innerHTML = todoListDisplay.join('')
+      tasksContainer.innerHTML = todoListDisplay
     }
 }
 
@@ -37,11 +37,13 @@ export function updateTasksAndClearButtonDisableIfEmpty(todoList) {
     }
 }
 
-export function displayTasks(task) { 
-    return `
-    <li id=task-${task.id} key=${task.id}>
-        <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
-        <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-        <button class='delete-task-button'>delete</button>
+export function renderTask(task, tasksContainer) {
+  const taskElement = document.createElement('div')
+  taskElement.innerHTML = `
+    <li id='task-${task.id}' data-key='${task.id}'>
+      <input type='checkbox' class='complete-task-checkbox haha' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
+      <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
+      <button class='delete-task-button'>delete</button>
     </li>`
+  tasksContainer.appendChild(taskElement)
 }
