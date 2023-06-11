@@ -40,7 +40,7 @@ export function updateTasksAndClearButtonDisableIfEmpty(todoList) {
 export function displayTasks(task) { 
     return `
     <li id=task-${task.id} key=${task.id}>
-        <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
+        <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
         <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
         <button class='delete-task-button'>delete</button>
     </li>`
