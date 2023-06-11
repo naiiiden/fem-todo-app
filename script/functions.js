@@ -1,29 +1,35 @@
-export function noTasksDisplay(todoList, tasksContainer, todoListDisplay) {
-    const emptyTaskList = document.querySelector('.empty-list-message')
-    const activeRadioBtn = document.querySelector('#active')
-    const completeRadioBtn = document.querySelector('#completed')
-  
-    if (todoList.length === 0 || (activeRadioBtn.checked && !todoList.some(task => !task.completed)) || (completeRadioBtn.checked && !todoList.some(task => task.completed))) {
-      emptyTaskList.style.display = 'block'
-      tasksContainer.innerHTML = ''
-      if (activeRadioBtn.checked) {
-        emptyTaskList.textContent = 'no active tasks'
-      } else if (completeRadioBtn.checked) {
-        emptyTaskList.textContent = 'no completed tasks'
-      } else {
-        emptyTaskList.textContent = 'no tasks'
-      }
+export function noTasksDisplay(todoList, tasksContainer) {
+  const emptyTaskList = document.querySelector('.empty-list-message')
+  const activeRadioBtn = document.querySelector('#active')
+  const completeRadioBtn = document.querySelector('#completed')
+
+  tasksContainer.innerHTML = ''
+
+  let filteredTasks = []
+  if (activeRadioBtn.checked) {
+    filteredTasks = todoList.filter(task => !task.completed)
+  } else if (completeRadioBtn.checked) {
+    filteredTasks = todoList.filter(task => task.completed)
+  } else {
+    filteredTasks = todoList
+  }
+
+  filteredTasks.forEach(task => {
+    renderTask(task, tasksContainer)
+  })
+
+  if (todoList.length === 0 || (activeRadioBtn.checked && filteredTasks.length === 0)) {
+    emptyTaskList.style.display = 'block'
+    if (activeRadioBtn.checked) {
+      emptyTaskList.textContent = 'no active tasks'
+    } else if (completeRadioBtn.checked) {
+      emptyTaskList.textContent = 'no completed tasks'
     } else {
-      emptyTaskList.style.display = 'none'
-      if (activeRadioBtn.checked) {
-        todoListDisplay = todoList.filter(task => !task.completed).map(task => renderTask(task, tasksContainer))
-      } else if (completeRadioBtn.checked) {
-        todoListDisplay = todoList.filter(task => task.completed).map(task => renderTask(task, tasksContainer))
-      } else {
-        todoListDisplay = todoList.map(task => renderTask(task, tasksContainer))
-      }
-      tasksContainer.innerHTML = todoListDisplay
+      emptyTaskList.textContent = 'no tasks'
     }
+  } else {
+    emptyTaskList.style.display = 'none'
+  }
 }
 
 export function updateTasksAndClearButtonDisableIfEmpty(todoList) {

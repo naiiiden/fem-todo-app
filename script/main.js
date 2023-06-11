@@ -38,7 +38,8 @@ document.querySelector('fieldset').addEventListener('change', (e) => {
 
         filteredTasks.forEach(task => {
             renderTask(task, tasksContainer)
-        })  
+        }) 
+        noTasksDisplay(todoList, tasksContainer)
     }
 })
 
@@ -69,8 +70,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
             </li>`
         taskInput.value = ''
         document.querySelector('#all').checked = true
-        // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
-        // noTasksDisplay(todoList, tasksContainer)
+        updateTasksAndClearButtonDisableIfEmpty(todoList)
+        noTasksDisplay(todoList, tasksContainer)
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -85,8 +86,8 @@ tasksContainer.addEventListener('click', (e) => {
         todoList = todoList.filter(task => task.id !== taskToDeleteKey)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
-        // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
-        // noTasksDisplay(todoList, tasksContainer)
+        updateTasksAndClearButtonDisableIfEmpty(todoList)
+        noTasksDisplay(todoList, tasksContainer)
     }
 })
 
@@ -101,12 +102,12 @@ tasksContainer.addEventListener('change', (e) => {
             if ((document.querySelector("#active").checked && todoList[taskIndex].completed) || (document.querySelector("#completed").checked && !todoList[taskIndex].completed)) {
                 e.target.parentNode.remove()
             }
-            // noTasksDisplay(todoList, tasksContainer);
+            noTasksDisplay(todoList, tasksContainer)
         }
     }
 })
 
-// updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+updateTasksAndClearButtonDisableIfEmpty(todoList)
 
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
@@ -114,9 +115,9 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
     document.querySelectorAll('.complete-task-checkbox:checked').forEach(element => {
         element.parentNode.remove()
     })
-    // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
-    // noTasksDisplay(todoList, tasksContainer)
+    updateTasksAndClearButtonDisableIfEmpty(todoList)
+    noTasksDisplay(todoList, tasksContainer)
 })
   
-// noTasksDisplay(todoList, tasksContainer)
+noTasksDisplay(todoList, tasksContainer)
   
