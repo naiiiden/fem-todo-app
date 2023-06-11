@@ -62,13 +62,11 @@ document.querySelector('form').addEventListener('submit', (e) => {
         todoList.push(newTask)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         tasksContainer.innerHTML += `
-            <div>
-                <li id=task-${taskId} key=${taskId}>
-                    <input type='checkbox' class='complete-task-checkbox' aria-label='Mark "${taskInput.value}" as ${false ? "incomplete" : "complete"}'/>    
-                    <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
-                    <button class='delete-task-button'>delete</button>
-                </li>
-            </div>`
+            <li id=task-${taskId} key=${taskId}>
+                <input type='checkbox' class='complete-task-checkbox' aria-label='Mark "${taskInput.value}" as ${false ? "incomplete" : "complete"}'/>    
+                <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
+                <button class='delete-task-button'>delete</button>
+            </li>`
         taskInput.value = ''
         document.querySelector('#all').checked = true
         // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)

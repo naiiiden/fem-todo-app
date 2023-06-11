@@ -38,12 +38,12 @@ export function updateTasksAndClearButtonDisableIfEmpty(todoList) {
 }
 
 export function renderTask(task, tasksContainer) {
-  const taskElement = document.createElement('div')
+  const taskElement = document.createElement('li')
+  taskElement.id = `task-${task.id}`
+  taskElement.dataset.key = task.id
   taskElement.innerHTML = `
-    <li id='task-${task.id}' data-key='${task.id}'>
-      <input type='checkbox' class='complete-task-checkbox haha' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
-      <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-      <button class='delete-task-button'>delete</button>
-    </li>`
+    <input type='checkbox' class='complete-task-checkbox haha' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
+    <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
+    <button class='delete-task-button'>delete</button>`
   tasksContainer.appendChild(taskElement)
 }
