@@ -19,24 +19,25 @@ todoList.forEach(task => {
 })
 
 document.querySelector('fieldset').addEventListener('change', (e) => {
-  if (e.target.matches('input[name="complete-status"]')) {
-    switch (e.target.getAttribute('id')) {
-      case 'Active':
-        todoListDisplay = todoList.filter(task => !task.completed).map(task => displayTasks(task))
-        // tasksContainer.innerHTML = todoListDisplay.join('')
-        noTasksDisplay(todoList, tasksContainer)
-        break
-      case 'Completed':
-        todoListDisplay = todoList.filter(task => task.completed).map(task => displayTasks(task))
-        // tasksContainer.innerHTML = todoListDisplay.join('')
-        noTasksDisplay(todoList, tasksContainer)
-        break
-      default:
-        todoListDisplay = todoList.map(task => displayTasks(task))
-        // tasksContainer.innerHTML = todoListDisplay.join('')
-        noTasksDisplay(todoList, tasksContainer)
+    if (e.target.matches('input[name="complete-status"]')) {
+        tasksContainer.innerHTML = ''
+        let filteredTasks = []
+        
+        switch (e.target.getAttribute('id')) {
+            case 'active':
+                filteredTasks = todoList.filter(task => !task.completed)
+                break
+            case 'completed':
+                filteredTasks = todoList.filter(task => task.completed)
+                break
+            default:
+                filteredTasks = todoList
+        }
+        
+        filteredTasks.forEach(task => {
+            renderTask(task, tasksContainer)
+        })  
     }
-  }
 })
 
 document.querySelector('form').addEventListener('submit', (e) => {
@@ -66,8 +67,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
             </li>`
         taskInput.value = ''
         document.querySelector('#all').checked = true
-        updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
-        noTasksDisplay(todoList, tasksContainer)
+        // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+        // noTasksDisplay(todoList, tasksContainer)
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -82,8 +83,8 @@ tasksContainer.addEventListener('click', (e) => {
         todoList = todoList.filter(task => task.id !== taskToDeleteById)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
-        updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
-        noTasksDisplay(todoList, tasksContainer)
+        // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+        // noTasksDisplay(todoList, tasksContainer)
     } 
 })
 
@@ -98,12 +99,12 @@ tasksContainer.addEventListener('change', (e) => {
             if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
                 e.target.parentNode.remove()
             }
-        noTasksDisplay(todoList, tasksContainer);
+        // noTasksDisplay(todoList, tasksContainer);
         }
     }
 })
 
-updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+// updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
 
 document.querySelector('.clear-completed').addEventListener('click', () => {
     todoList = todoList.filter(task => task.completed === false)
@@ -111,9 +112,9 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
     document.querySelectorAll('.complete-task-checkbox:checked').forEach(element => {
         element.parentNode.remove()
     })
-    updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
-    noTasksDisplay(todoList, tasksContainer)
+    // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
+    // noTasksDisplay(todoList, tasksContainer)
 })
   
-noTasksDisplay(todoList, tasksContainer)
+// noTasksDisplay(todoList, tasksContainer)
   
