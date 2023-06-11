@@ -92,16 +92,16 @@ tasksContainer.addEventListener('click', (e) => {
 
 tasksContainer.addEventListener('change', (e) => {
     if (e.target.classList.contains('complete-task-checkbox')) {
-        const taskToComplete = parseInt(e.target.parentNode.getAttribute('key'))
+        const taskToComplete = parseInt(e.target.parentNode.getAttribute('data-key'))
         const taskIndex = todoList.findIndex(task => task.id === taskToComplete)
         if (taskIndex !== -1) {
             todoList[taskIndex].changeCompleteStatus()
             localStorage.setItem('todoList', JSON.stringify(todoList))
             e.target.parentNode.querySelector('.completed-status-span').textContent = todoList[taskIndex].completed ? 'completed' : 'not completed'
-            if (document.querySelector("#active").checked === true || document.querySelector("#completed").checked === true) {
+            if ((document.querySelector("#active").checked && todoList[taskIndex].completed) || (document.querySelector("#completed").checked && !todoList[taskIndex].completed)) {
                 e.target.parentNode.remove()
             }
-        // noTasksDisplay(todoList, tasksContainer);
+            // noTasksDisplay(todoList, tasksContainer);
         }
     }
 })
