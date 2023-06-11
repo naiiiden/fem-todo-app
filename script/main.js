@@ -81,13 +81,13 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
 tasksContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-task-button')) {
-        const taskToDeleteById = parseInt(e.target.parentNode.getAttribute('key'))
-        todoList = todoList.filter(task => task.id !== taskToDeleteById)
+        const taskToDeleteKey = parseInt(e.target.parentNode.dataset.key)
+        todoList = todoList.filter(task => task.id !== taskToDeleteKey)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         // updateTasksAndClearButtonDisableIfEmpty(todoList, todoListDisplay)
         // noTasksDisplay(todoList, tasksContainer)
-    } 
+    }
 })
 
 tasksContainer.addEventListener('change', (e) => {
