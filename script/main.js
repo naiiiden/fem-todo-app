@@ -102,7 +102,6 @@ tasksContainer.addEventListener('change', (e) => {
             if ((document.querySelector("#active").checked && todoList[taskIndex].completed) || (document.querySelector("#completed").checked && !todoList[taskIndex].completed)) {
                 e.target.parentNode.remove()
             }
-            noTasksDisplay(todoList, tasksContainer)
         }
     }
 })
@@ -116,7 +115,7 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
         element.parentNode.remove()
     })
     updateTasksAndClearButtonDisableIfEmpty(todoList)
-    noTasksDisplay(todoList, tasksContainer)
+    // noTasksDisplay(todoList, tasksContainer)
 })
   
 noTasksDisplay(todoList, tasksContainer)
