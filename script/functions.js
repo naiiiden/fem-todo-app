@@ -39,9 +39,9 @@ export function updateTasksAndClearButtonDisableIfEmpty(todoList) {
 
 export function displayTasks(task) { 
     return `
-    <div id=task-${task.id} key=${task.id}>
+    <li id=task-${task.id} key=${task.id}>
         <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : null}/>
         <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
         <button class='delete-task-button'>delete</button>
-    </div>`
+    </li>`
 }
