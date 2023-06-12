@@ -6,3 +6,12 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     background: $bright-blue;
 }
+
+// temporary
+li {
+    cursor: pointer;
+}
+
+li:active {
+    cursor: move;
+}

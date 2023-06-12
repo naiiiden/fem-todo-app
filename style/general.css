@@ -80,4 +80,12 @@ html {
 body {
   font-family: "Josefin Sans", sans-serif;
   background: hsl(220, 98%, 61%);
+}
+
+li {
+  cursor: pointer;
+}
+
+li:active {
+  cursor: move;
 }/*# sourceMappingURL=general.css.map */

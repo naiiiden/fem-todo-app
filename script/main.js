@@ -12,8 +12,6 @@ if (localStorage.getItem('todoList')) {
     })
 }
 
-console.log(todoList)
-
 let tasksContainer = document.querySelector('.tasks-container')
 
 todoList.forEach(task => {
@@ -66,7 +64,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         todoList.push(newTask)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         tasksContainer.innerHTML += `
-            <li id=task-${taskId} key=${taskId}>
+            <li id=task-${taskId} key=${taskId} draggable='true'>
                 <input type='checkbox' class='complete-task-checkbox' aria-label='Mark "${taskInput.value}" as ${false ? "incomplete" : "complete"}'/>    
                 <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
                 <button class='delete-task-button' aria-label='Delete task: "${taskInput.value}"'>delete</button>
@@ -121,5 +119,58 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
     updateTasksAndClearButtonDisableIfEmpty(todoList)
     noTasksDisplay(todoList)
 })
-  
-  
+
+// https://web.dev/drag-and-drop/
+document.addEventListener('DOMContentLoaded', (e) => {
+    let items = document.querySelectorAll('.tasks-container li')
+    let dragSrcEl
+
+    function handleDragStart(e) {
+        this.style.opacity = '0.4'
+        dragSrcEl = this; // Assign the current element to dragSrcEl
+
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML)
+    }
+    
+    function handleDragEnd(e) {
+        this.style.opacity = '1'
+    }
+
+    items.forEach(function (item) {
+        item.classList.remove('over')
+    });
+
+    function handleDragOver(e) {
+        e.preventDefault()
+        return false
+    }
+
+    function handleDragEnter(e) {
+        this.classList.add('over')
+    }
+    
+    function handleDragLeave(e) {
+        this.classList.remove('over')
+    }
+
+    function handleDrop(e) {
+        e.stopPropagation() // stops the browser from redirecting.
+
+        if (dragSrcEl !== this) {
+            dragSrcEl.innerHTML = this.innerHTML
+            this.innerHTML = e.dataTransfer.getData('text/html')
+        }
+        
+        return false
+    }
+
+    items.forEach(function (item) {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragover', handleDragOver);
+        item.addEventListener('dragenter', handleDragEnter);
+        item.addEventListener('dragleave', handleDragLeave);
+        item.addEventListener('dragend', handleDragEnd);
+        item.addEventListener('drop', handleDrop);
+    })
+})
