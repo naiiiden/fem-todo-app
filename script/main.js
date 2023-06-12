@@ -65,7 +65,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
             <li id=task-${taskId} key=${taskId}>
                 <input type='checkbox' class='complete-task-checkbox' aria-label='Mark "${taskInput.value}" as ${false ? "incomplete" : "complete"}'/>    
                 <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
-                <button class='delete-task-button'>delete</button>
+                <button class='delete-task-button' aria-label='Delete task: "${taskInput.value}"'>delete</button>
             </li>`
         taskInput.value = ''
         document.querySelector('#all').checked = true
