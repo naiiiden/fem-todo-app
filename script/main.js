@@ -1,4 +1,4 @@
-import { updateTasksAndClearButtonDisableIfEmpty, renderTask } from "./functions.js"
+import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, renderTask } from "./functions.js"
 import { TodoTask } from "./classes.js"
 
 let todoList = []
@@ -20,6 +20,8 @@ todoList.forEach(task => {
     renderTask(task, tasksContainer)
 })
 
+noTasksDisplay(todoList)
+
 document.querySelector('fieldset').addEventListener('change', (e) => {
     if (e.target.matches('input[name="complete-status"]')) {
         tasksContainer.innerHTML = ''
@@ -35,6 +37,8 @@ document.querySelector('fieldset').addEventListener('change', (e) => {
             default:
                 filteredTasks = todoList
         }
+
+        noTasksDisplay(todoList);
 
         filteredTasks.forEach(task => {
             renderTask(task, tasksContainer)
@@ -70,6 +74,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         taskInput.value = ''
         document.querySelector('#all').checked = true
         updateTasksAndClearButtonDisableIfEmpty(todoList)
+        noTasksDisplay(todoList);
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -85,6 +90,7 @@ tasksContainer.addEventListener('click', (e) => {
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         updateTasksAndClearButtonDisableIfEmpty(todoList)
+        noTasksDisplay(todoList)
     }
 })
 
@@ -99,6 +105,7 @@ tasksContainer.addEventListener('change', (e) => {
             if ((document.querySelector("#active").checked && todoList[taskIndex].completed) || (document.querySelector("#completed").checked && !todoList[taskIndex].completed)) {
                 e.target.parentNode.remove()
             }
+            noTasksDisplay(todoList)
         }
     }
 })
@@ -112,6 +119,7 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
         element.parentNode.remove()
     })
     updateTasksAndClearButtonDisableIfEmpty(todoList)
+    noTasksDisplay(todoList)
 })
   
   
