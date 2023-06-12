@@ -1,4 +1,4 @@
-import { noTasksDisplay, updateTasksAndClearButtonDisableIfEmpty, renderTask } from "./functions.js"
+import { updateTasksAndClearButtonDisableIfEmpty, renderTask } from "./functions.js"
 import { TodoTask } from "./classes.js"
 
 let todoList = []
@@ -39,7 +39,6 @@ document.querySelector('fieldset').addEventListener('change', (e) => {
         filteredTasks.forEach(task => {
             renderTask(task, tasksContainer)
         }) 
-        noTasksDisplay(todoList, tasksContainer)
     }
 })
 
@@ -71,7 +70,6 @@ document.querySelector('form').addEventListener('submit', (e) => {
         taskInput.value = ''
         document.querySelector('#all').checked = true
         updateTasksAndClearButtonDisableIfEmpty(todoList)
-        noTasksDisplay(todoList, tasksContainer)
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -87,7 +85,6 @@ tasksContainer.addEventListener('click', (e) => {
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.remove()
         updateTasksAndClearButtonDisableIfEmpty(todoList)
-        noTasksDisplay(todoList, tasksContainer)
     }
 })
 
@@ -115,8 +112,6 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
         element.parentNode.remove()
     })
     updateTasksAndClearButtonDisableIfEmpty(todoList)
-    // noTasksDisplay(todoList, tasksContainer)
 })
   
-noTasksDisplay(todoList, tasksContainer)
   
