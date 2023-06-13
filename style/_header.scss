@@ -13,8 +13,8 @@ header {
     h1 {
         text-transform: uppercase;
         color: $very-light-gray;
-        letter-spacing: .625rem;
-        font-size: 1.875rem;
+        letter-spacing: clamp(.675rem, 2vw, .875rem);
+        font-size: clamp(1.875rem, 4vw, 2.5rem);
     }
 
     button {
@@ -34,11 +34,6 @@ header {
         div {
             max-width: 600px;
             margin: auto;
-        }
-
-        h1 {
-            font-size: 2.25rem;
-            letter-spacing: .875rem;
         }
     }
 }
