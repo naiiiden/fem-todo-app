@@ -1,3 +1,11 @@
+[data-theme='dark'] {
+    --bg: hsl(235, 21%, 11%);
+}
+
+[data-theme='light'] {
+    --bg: hsl(236, 33%, 92%);
+}
+
 $bright-blue: hsl(220, 98%, 61%);
 $check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 $very-light-gray: hsl(0, 0%, 98%);
