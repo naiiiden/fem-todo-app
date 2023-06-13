@@ -1,0 +1,21 @@
+header {
+    background: url('../images/bg-mobile-dark.jpg');
+    background-size: cover;
+    padding: 2.5rem 1.5rem 7.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        text-transform: uppercase;
+        color: $very-light-gray;
+        letter-spacing: .5rem;
+        font-size: 1.875rem;
+    }
+
+    button {
+        border: none;
+        background: none;
+        margin-top: -.5rem;
+    }
+}

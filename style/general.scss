@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background: $bright-blue;
+    background: $very-dark-blue;
 }
 
 // temporary
@@ -15,3 +15,5 @@ li {
 li:active {
     cursor: move;
 }
+
+@import './header.scss'

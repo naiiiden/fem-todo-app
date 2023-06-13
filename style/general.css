@@ -79,7 +79,7 @@ html {
 }
 body {
   font-family: "Josefin Sans", sans-serif;
-  background: hsl(220, 98%, 61%);
+  background: hsl(235, 21%, 11%);
 }
 
 li {
@@ -88,4 +88,24 @@ li {
 
 li:active {
   cursor: move;
+}
+
+header {
+  background: url("../images/bg-mobile-dark.jpg");
+  background-size: cover;
+  padding: 2.5rem 1.5rem 7.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header h1 {
+  text-transform: uppercase;
+  color: hsl(0, 0%, 98%);
+  letter-spacing: 0.5rem;
+  font-size: 1.875rem;
+}
+header button {
+  border: none;
+  background: none;
+  margin-top: -0.5rem;
 }/*# sourceMappingURL=general.css.map */
