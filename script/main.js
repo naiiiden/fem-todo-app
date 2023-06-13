@@ -36,7 +36,7 @@ document.querySelector('fieldset').addEventListener('change', (e) => {
                 filteredTasks = todoList
         }
 
-        noTasksDisplay(todoList);
+        noTasksDisplay(todoList)
 
         filteredTasks.forEach(task => {
             renderTask(task, tasksContainer)
@@ -72,7 +72,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         taskInput.value = ''
         document.querySelector('#all').checked = true
         updateTasksAndClearButtonDisableIfEmpty(todoList)
-        noTasksDisplay(todoList);
+        noTasksDisplay(todoList)
     } else {
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
@@ -127,9 +127,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     function handleDragStart(e) {
         this.style.opacity = '0.4'
-        dragSrcEl = this; // Assign the current element to dragSrcEl
+        dragSrcEl = this // Assign the current element to dragSrcEl
 
-        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.effectAllowed = 'move'
         e.dataTransfer.setData('text/html', this.innerHTML)
     }
     
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     items.forEach(function (item) {
         item.classList.remove('over')
-    });
+    })
 
     function handleDragOver(e) {
         e.preventDefault()
@@ -156,21 +156,35 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     function handleDrop(e) {
         e.stopPropagation() // stops the browser from redirecting.
-
+      
         if (dragSrcEl !== this) {
-            dragSrcEl.innerHTML = this.innerHTML
-            this.innerHTML = e.dataTransfer.getData('text/html')
+          const dragSrcId = dragSrcEl.getAttribute('id').replace('task-', '')
+          const dropTargetId = this.getAttribute('id').replace('task-', '')
+      
+          const dragSrcIndex = todoList.findIndex(task => task.id === parseInt(dragSrcId))
+          const dropTargetIndex = todoList.findIndex(task => task.id === parseInt(dropTargetId))
+      
+          if (dragSrcIndex !== -1 && dropTargetIndex !== -1) {
+            // Swap the tasks in the todoList array
+            [todoList[dragSrcIndex], todoList[dropTargetIndex]] = [todoList[dropTargetIndex], todoList[dragSrcIndex]]
+      
+            // Update the local storage with the updated todoList
+            localStorage.setItem('todoList', JSON.stringify(todoList))
+          }
+      
+          dragSrcEl.innerHTML = this.innerHTML
+          this.innerHTML = e.dataTransfer.getData('text/html')
         }
-        
+      
         return false
-    }
+      }
 
     items.forEach(function (item) {
-        item.addEventListener('dragstart', handleDragStart);
-        item.addEventListener('dragover', handleDragOver);
-        item.addEventListener('dragenter', handleDragEnter);
-        item.addEventListener('dragleave', handleDragLeave);
-        item.addEventListener('dragend', handleDragEnd);
-        item.addEventListener('drop', handleDrop);
+        item.addEventListener('dragstart', handleDragStart)
+        item.addEventListener('dragover', handleDragOver)
+        item.addEventListener('dragenter', handleDragEnter)
+        item.addEventListener('dragleave', handleDragLeave)
+        item.addEventListener('dragend', handleDragEnd)
+        item.addEventListener('drop', handleDrop)
     })
 })
