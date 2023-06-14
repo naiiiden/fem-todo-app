@@ -1,0 +1,25 @@
+form {
+    max-width: 600px;
+    margin: -4.125rem auto 0 auto;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+
+    #task-input {
+        width: 100%;
+        background: $very-dark-desaturated-blue;
+        border: none;
+        border-radius: .25rem;
+        padding: 1.125rem 1.125rem 1.125rem 2.5rem;
+        font-size: clamp(1rem, 5vw, 1.125rem);
+        color: $very-light-grayish-blue;
+    }
+
+    .task-input-decorative-circle {
+        border: 1px solid red;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 45%;
+    }
+}

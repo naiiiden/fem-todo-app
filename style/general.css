@@ -132,4 +132,27 @@ header button {
     max-width: 600px;
     margin: auto;
   }
+}
+form {
+  max-width: 600px;
+  margin: -4.125rem auto 0 auto;
+  padding: 2.5rem 1.5rem;
+  position: relative;
+}
+form #task-input {
+  width: 100%;
+  background: hsl(235, 24%, 19%);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 1.125rem 1.125rem 1.125rem 2.5rem;
+  font-size: clamp(1rem, 5vw, 1.125rem);
+  color: hsl(236, 33%, 92%);
+}
+form .task-input-decorative-circle {
+  border: 1px solid red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 45%;
 }/*# sourceMappingURL=general.css.map */
