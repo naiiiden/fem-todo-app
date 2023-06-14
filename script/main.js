@@ -63,12 +63,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         let newTask = new TodoTask(taskInput.value, false, ++taskId)
         todoList.push(newTask)
         localStorage.setItem('todoList', JSON.stringify(todoList))
-        tasksContainer.innerHTML += `
-            <li id=task-${taskId} key=${taskId} draggable='true'>
-                <input type='checkbox' class='complete-task-checkbox' aria-label='Mark "${taskInput.value}" as ${false ? "incomplete" : "complete"}' aria-live='polite'/>    
-                <span>${taskInput.value}</span>
-                <button class='delete-task-button' aria-label='Delete task: "${taskInput.value}"'>delete</button>
-            </li>`
+        renderTask(newTask, tasksContainer)
         taskInput.value = ''
         document.querySelector('#all').checked = true
         updateTasksAndClearButtonDisableIfEmpty(todoList)
