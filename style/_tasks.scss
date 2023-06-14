@@ -1,0 +1,18 @@
+.tasks-buttons-wrapper {
+    margin: 0 1.5rem 2.5rem 1.5rem;
+    border-radius: .375rem;
+    background: $very-dark-desaturated-blue;
+    font-size: clamp(.875rem, 3vw, 1.125rem);
+
+    li {
+        padding: 1.25rem;
+        border-bottom: 1px solid $very-dark-grayish-blue3;
+    }
+
+    .tasks-left-button-container {
+        padding: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
