@@ -43,8 +43,8 @@ export function renderTask(task, tasksContainer) {
   taskElement.dataset.key = task.id
   taskElement.draggable = true
   taskElement.innerHTML = `
-    <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
+    <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}' aria-live='polite'/>
     <span>${task.task}</span>
-    <button class='delete-task-button' aria-label='Delete task: "${task.task}"'><img src="images/icon-cross.svg" alt=""></button>`
+    <button class='delete-task-button' aria-label='Delete task: "${task.task}"'>delete</button>`
   tasksContainer.appendChild(taskElement)
 }
