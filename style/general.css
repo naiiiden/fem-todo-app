@@ -155,4 +155,10 @@ form .task-input-decorative-circle {
   height: 15px;
   position: absolute;
   top: 45%;
+}
+
+@media screen and (min-width: 600px) {
+  form {
+    padding: 2.5rem 0;
+  }
 }/*# sourceMappingURL=general.css.map */

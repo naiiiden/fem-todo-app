@@ -23,3 +23,9 @@ form {
         top: 45%;
     }
 }
+
+@media screen and (min-width: 600px) {
+    form {
+        padding: 2.5rem 0;
+    }
+}
