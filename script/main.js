@@ -66,8 +66,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
         tasksContainer.innerHTML += `
             <li id=task-${taskId} key=${taskId} draggable='true'>
                 <input type='checkbox' class='complete-task-checkbox' aria-label='Mark "${taskInput.value}" as ${false ? "incomplete" : "complete"}'/>    
-                <span>task: ${taskInput.value}, completed: <span class='completed-status-span'>not completed</span></span>
-                <button class='delete-task-button' aria-label='Delete task: "${taskInput.value}"'>delete</button>
+                <span>${taskInput.value}</span>
+                <button class='delete-task-button' aria-label='Delete task: "${taskInput.value}"'><img src="images/icon-cross.svg" alt=""></button>
             </li>`
         taskInput.value = ''
         document.querySelector('#all').checked = true
@@ -99,7 +99,6 @@ tasksContainer.addEventListener('change', (e) => {
         if (taskIndex !== -1) {
             todoList[taskIndex].changeCompleteStatus()
             localStorage.setItem('todoList', JSON.stringify(todoList))
-            e.target.parentNode.querySelector('.completed-status-span').textContent = todoList[taskIndex].completed ? 'completed' : 'not completed'
             if ((document.querySelector("#active").checked && todoList[taskIndex].completed) || (document.querySelector("#completed").checked && !todoList[taskIndex].completed)) {
                 e.target.parentNode.remove()
             }

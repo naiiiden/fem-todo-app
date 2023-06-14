@@ -44,7 +44,7 @@ export function renderTask(task, tasksContainer) {
   taskElement.draggable = true
   taskElement.innerHTML = `
     <input type='checkbox' class='complete-task-checkbox' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}'/>
-    <span>task: ${task.task}, completed: <span class='completed-status-span'>${task.completed ? 'completed' : 'not completed'}</span></span>
-    <button class='delete-task-button' aria-label='Delete task: "${task.task}"'>delete</button>`
+    <span>${task.task}</span>
+    <button class='delete-task-button' aria-label='Delete task: "${task.task}"'><img src="images/icon-cross.svg" alt=""></button>`
   tasksContainer.appendChild(taskElement)
 }
