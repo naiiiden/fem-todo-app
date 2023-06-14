@@ -1,7 +1,4 @@
 form {
-    max-width: 600px;
-    margin: -4.125rem auto 0 auto;
-    padding: 2.5rem 1.5rem;
     position: relative;
 
     #task-input {
@@ -21,11 +18,5 @@ form {
         height: 15px;
         position: absolute;
         top: 45%;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    form {
-        padding: 2.5rem 0;
     }
 }
