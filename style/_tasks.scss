@@ -25,13 +25,32 @@ fieldset {
     justify-content: center;
     gap: 1rem;
 
-    legend, input {
+    legend {
         display: none;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
     }
 }
 
 @media screen and (min-width: 600px) {
     .tasks-buttons-wrapper {
         margin: unset;
+    }
+
+    main, .tasks-container {
+        position: relative;
+    }
+
+    fieldset {
+        position: absolute;
+        bottom: 2.5rem;
+        width: fit-content;
+        z-index: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
     }
 }
