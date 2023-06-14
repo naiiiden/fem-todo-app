@@ -44,17 +44,21 @@ document.querySelector('fieldset').addEventListener('change', (e) => {
     }
 })
 
+const errorText = document.querySelector('.error-indicator')
+errorText.style.display = 'none'
+
 document.querySelector('form').addEventListener('submit', (e) => {
     console.log(todoList)
     e.preventDefault()
 
     const taskInput = document.querySelector('#task-input')
-    const errorText = document.querySelector('.error-indicator')
 
     if (taskInput.value !== '') {
         if (todoList.some(task => task.task === taskInput.value)) {
+            errorText.style.display = 'block'
             errorText.textContent = 'cannot add duplicate tasks'
             setTimeout(() => {
+                errorText.style.display = 'none'
                 errorText.textContent = ''
             }, 3000)
             return
@@ -69,8 +73,10 @@ document.querySelector('form').addEventListener('submit', (e) => {
         updateTasksAndClearButtonDisableIfEmpty(todoList)
         noTasksDisplay(todoList)
     } else {
+        errorText.style.display = 'block'
         errorText.textContent = 'task text cannot be empty'
         setTimeout(() => {
+            errorText.style.display = 'none'
             errorText.textContent = ''
         }, 3000)
     }
