@@ -18,7 +18,11 @@ main {
 
 @media screen and (min-width: 600px) {
     main {
-        padding: 2.5rem 0;
+        padding: 2.5rem 0;        
+    }
+
+    .main-container {
+        padding: 0 3rem;
     }
 }
 

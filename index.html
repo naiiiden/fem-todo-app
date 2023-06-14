@@ -16,37 +16,39 @@
       </button>
     </div>
   </header>
-  <main>
-    <form id="add-task-form">
-      <div class="task-input-decorative-circle"></div>
-      <input type="text" id="task-input" aria-label="Create a new todo" placeholder="Create a new todo...">
-    </form>
-    <p class="error-indicator"></p>
-    <p class="empty-list-message"></p>
-    <div class="tasks-buttons-wrapper">
-      <ul class="tasks-container"></ul>
-      <div class="tasks-left-button-container">
-        <p class="total-tasks"></p>
-        <button class="clear-completed">clear completed</button>
+  <div class="main-container">
+    <main>
+      <form id="add-task-form">
+        <div class="task-input-decorative-circle"></div>
+        <input type="text" id="task-input" aria-label="Create a new todo" placeholder="Create a new todo...">
+      </form>
+      <p class="error-indicator"></p>
+      <p class="empty-list-message"></p>
+      <div class="tasks-buttons-wrapper">
+        <ul class="tasks-container"></ul>
+        <div class="tasks-left-button-container">
+          <p class="total-tasks"></p>
+          <button class="clear-completed">clear completed</button>
+        </div>
       </div>
-    </div>
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset -->
-    <fieldset form="add-task-form">
-      <legend>Filter todos</legend>
-      <label for="all">
-        <input type="radio" id="all" name="complete-status" checked/>
-        All
-      </label>
-      <label for="active">
-        <input type="radio" id="active" name="complete-status"/>
-        Active
-      </label>
-      <label for="completed">
-        <input type="radio" id="completed" name="complete-status"/>
-        Completed
-      </label>
-    </fieldset>
-  </main>
+      <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset -->
+      <fieldset form="add-task-form">
+        <legend>Filter todos</legend>
+        <label for="all">
+          <input type="radio" id="all" name="complete-status" checked/>
+          All
+        </label>
+        <label for="active">
+          <input type="radio" id="active" name="complete-status"/>
+          Active
+        </label>
+        <label for="completed">
+          <input type="radio" id="completed" name="complete-status"/>
+          Completed
+        </label>
+      </fieldset>
+    </main>
+  </div>
   <script src="script/main.js" type="module"></script>
   <script src="script/theme-toggle.js"></script>
 </body>

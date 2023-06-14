@@ -16,6 +16,20 @@
     }
 }
 
+fieldset {    
+    border: none;
+    padding: 1.125rem;
+    border-radius: .375rem;
+    background: $very-dark-desaturated-blue;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    legend, input {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 600px) {
     .tasks-buttons-wrapper {
         margin: unset;
