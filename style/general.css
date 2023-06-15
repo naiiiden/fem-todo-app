@@ -197,6 +197,13 @@ form .task-input-decorative-circle {
   border: none;
   background: none;
 }
+.tasks-buttons-wrapper .tasks-left-button-container button:focus-visible {
+  outline: 2px solid hsl(236, 33%, 92%);
+  outline-offset: 2px;
+}
+.tasks-buttons-wrapper .tasks-left-button-container button:hover {
+  color: hsl(236, 33%, 92%);
+}
 
 fieldset {
   border: none;
@@ -208,13 +215,21 @@ fieldset {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  font-weight: 700;
 }
 fieldset legend {
   display: none;
 }
-fieldset label:focus-within {
-  font-weight: 700;
+fieldset input:checked + label {
   color: hsl(220, 98%, 61%);
+}
+fieldset input:focus-visible + label {
+  outline: 2px solid hsl(236, 33%, 92%);
+  outline-offset: 2px;
+}
+fieldset input:hover + label {
+  color: hsl(236, 33%, 92%);
+  cursor: pointer;
 }
 fieldset input {
   position: absolute;

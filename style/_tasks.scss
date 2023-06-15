@@ -25,7 +25,17 @@
             color: inherit;
             border: none;
             background: none;
+
+            &:focus-visible {
+                outline: 2px solid $very-light-grayish-blue;
+                outline-offset: 2px;
+            }
+
+            &:hover {
+                color: $very-light-grayish-blue;
+            }
         }
+
     }
 }
 
@@ -39,14 +49,24 @@ fieldset {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    font-weight: 700;
 
     legend {
         display: none;
     }
 
-    label:focus-within {
-        font-weight: 700;
+    input:checked + label {
         color: $bright-blue;
+    }
+
+    input:focus-visible + label {
+        outline: 2px solid $very-light-grayish-blue;
+        outline-offset: 2px;
+    }
+
+    input:hover + label {
+        color: $very-light-grayish-blue;
+        cursor: pointer;
     }
 
     input {
