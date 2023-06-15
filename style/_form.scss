@@ -6,17 +6,19 @@ form {
         background: $very-dark-desaturated-blue;
         border: none;
         border-radius: .25rem;
-        padding: 1.125rem 1.375rem 1.125rem 2.5rem;
+        padding: 1.125rem 1.375rem 1.125rem 4.25rem;
         font-size: clamp(.875rem, 3vw, 1.125rem);
         color: $very-light-grayish-blue;
     }
 
     .task-input-decorative-circle {
-        border: 1px solid red;
+        border: 1px solid $very-dark-grayish-blue2;
         border-radius: 50%;
-        width: 15px;
-        height: 15px;
+        width: clamp(1.375rem, 3vw, 1.5rem);
+        height: clamp(1.375rem, 3vw, 1.5rem);
         position: absolute;
-        top: 45%;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1.5rem;
     }
 }
