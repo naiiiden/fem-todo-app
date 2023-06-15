@@ -92,7 +92,7 @@ body {
 
 main {
   max-width: 600px;
-  margin: -5.125rem auto 0 auto;
+  margin: -9.125rem auto 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -119,7 +119,7 @@ header {
   background: url("../images/bg-mobile-dark.jpg");
   background-size: cover;
   padding: 2.5rem 1.5rem;
-  height: 12.5rem;
+  height: 13.5rem;
 }
 header div {
   display: flex;
