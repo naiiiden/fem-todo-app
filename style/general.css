@@ -199,6 +199,11 @@ form .task-input-decorative-circle {
   border-radius: 50%;
   transform: translateY(-50%);
 }
+.tasks-buttons-wrapper li input:hover:not(:checked), .tasks-buttons-wrapper li input:focus-visible:not(:checked) {
+  background: linear-gradient(#25273c, #25273c) padding-box, linear-gradient(#57ddff, #c058f3) border-box;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
 .tasks-buttons-wrapper li input:checked {
   background: linear-gradient(#57ddff, #c058f3);
 }
@@ -216,9 +221,14 @@ form .task-input-decorative-circle {
   background: url("../images/icon-check.svg") no-repeat;
   background-position: center center;
 }
+.tasks-buttons-wrapper li input:checked + label {
+  text-decoration: line-through;
+  color: hsl(233, 14%, 35%);
+}
 .tasks-buttons-wrapper li label {
   width: 100%;
   margin-left: 2.75rem;
+  cursor: pointer;
 }
 .tasks-buttons-wrapper li button {
   margin-left: auto;

@@ -22,6 +22,13 @@
             border-radius: 50%;
             transform: translateY(-50%);
 
+            &:hover:not(:checked), &:focus-visible:not(:checked) {
+                background: linear-gradient(#25273c, #25273c) padding-box,
+                linear-gradient(#57ddff,#c058f3) border-box;
+                border: 1px solid transparent;
+                border-radius: 50%;
+            }
+
             &:checked {
                 background: linear-gradient(#57ddff,#c058f3);
             }
@@ -44,9 +51,15 @@
             }
         }
 
+        input:checked + label {
+            text-decoration: line-through;
+            color: $very-dark-grayish-blue2;
+        }
+
         label {
             width: 100%;
             margin-left: 2.75rem;
+            cursor: pointer;
         }
 
         button {
