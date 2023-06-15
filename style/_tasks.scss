@@ -4,29 +4,49 @@
     font-size: clamp(.875rem, 3vw, 1.125rem);
 
     li {
-        padding: 1.125rem;
+        padding: 1.125rem 1.375rem;
         border-bottom: 1px solid $very-dark-grayish-blue3;
+        display: flex;
+        color: $very-light-grayish-blue;
+
+        button {
+            margin-left: auto;
+        }
     }
 
     .tasks-left-button-container {
-        padding: 1.125rem;
+        padding: 1.125rem 1.375rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        color: $very-dark-grayish-blue2;
+
+        button {
+            color: inherit;
+            border: none;
+            background: none;
+        }
     }
 }
 
 fieldset {    
     border: none;
-    padding: 1.125rem;
+    padding: 1.125rem 1.375rem;
     border-radius: .375rem;
+    font-size: clamp(.875rem, 3vw, 1.125rem);
     background: $very-dark-desaturated-blue;
+    color: $very-dark-grayish-blue2;
     display: flex;
     justify-content: center;
     gap: 1rem;
 
     legend {
         display: none;
+    }
+
+    label:focus-within {
+        font-weight: 700;
+        color: $bright-blue;
     }
 
     input {
