@@ -2,6 +2,7 @@ export function noTasksDisplay(todoList) {
   const emptyTaskList = document.querySelector('.empty-list-message')
   const activeRadioBtn = document.querySelector('#active')
   const completeRadioBtn = document.querySelector('#completed')
+  const emptyListContainer = document.querySelector('.empty-list-container')
 
   let filteredTasks = []
   if (activeRadioBtn.checked) {
@@ -14,15 +15,15 @@ export function noTasksDisplay(todoList) {
 
   if (filteredTasks.length === 0) {
     if (activeRadioBtn.checked) {
-      emptyTaskList.textContent = 'no active tasks'
+      emptyTaskList.textContent = 'No active tasks'
     } else if (completeRadioBtn.checked) {
-      emptyTaskList.textContent = 'no completed tasks'
+      emptyTaskList.textContent = 'No completed tasks'
     } else {
-      emptyTaskList.textContent = 'no tasks'
+      emptyTaskList.textContent = 'No tasks'
     }
-    emptyTaskList.style.display = 'block'
+    emptyListContainer.style.display = 'block'
   } else {
-    emptyTaskList.style.display = 'none'
+    emptyListContainer.style.display = 'none'
   }
 }
 
