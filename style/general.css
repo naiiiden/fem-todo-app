@@ -309,6 +309,7 @@ form .task-input-decorative-circle {
 .tasks-buttons-wrapper .tasks-left-button-container button {
   border: none;
   background: none;
+  color: hsl(234, 11%, 52%);
 }
 .tasks-buttons-wrapper .tasks-left-button-container button:not(:disabled) {
   color: inherit;

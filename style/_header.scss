@@ -26,7 +26,7 @@ header {
 
     h1 {
         text-transform: uppercase;
-        color: $very-light-gray;
+        color: hsl(0, 0%, 98%);
         letter-spacing: clamp(.675rem, 2vw, .875rem);
         font-size: clamp(1.875rem, 4vw, 2.5rem);
     }
