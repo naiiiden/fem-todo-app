@@ -2,7 +2,7 @@
     border-radius: .375rem;
     background: var(--bg-primary);
     font-size: clamp(.875rem, 3vw, 1.125rem);
-    color: $light-red;
+    color: var(--error);
     text-align: center;
     padding: 1.125rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

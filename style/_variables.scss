@@ -10,6 +10,7 @@
     --input-border: hsl(233, 14%, 35%);
     --text-checked: hsl(233, 14%, 35%);
     --blue: hsl(220, 98%, 66%);
+    --error: hsl(0, 80%, 66%);
 }
 
 [data-theme='light'] {
@@ -24,6 +25,7 @@
     --input-border: hsl(233, 11%, 84%);
     --text-checked: hsl(252, 11%, 91%);
     --blue: hsl(220, 98%, 55%);
+    --error: hsl(0, 80%, 49%);
 }
 
 $bright-blue: hsl(220, 98%, 61%);
@@ -40,4 +42,3 @@ $dark-grayish-blue2: hsl(234, 11%, 52%);
 $very-dark-grayish-blue2: hsl(233, 14%, 35%);
 $very-dark-grayish-blue3: hsl(237, 14%, 26%);
 $light-red: hsl(0, 80%, 66%);
-$test: hsl(252, 11%, 91%);
