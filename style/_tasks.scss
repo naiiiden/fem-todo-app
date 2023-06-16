@@ -1,10 +1,16 @@
-.empty-list-container {
+.error-indicator {
     border-radius: .375rem;
     background: $very-dark-desaturated-blue;
     font-size: clamp(.875rem, 3vw, 1.125rem);
-    color: $very-light-grayish-blue;
+    color: $light-red;
     text-align: center;
+    padding: 1.125rem;
+}
+
+.empty-list-container {
+    @extend .error-indicator;
     padding: 2.25rem;
+    color: $very-light-grayish-blue;
 
     p {
         margin-top: 2.25rem;
