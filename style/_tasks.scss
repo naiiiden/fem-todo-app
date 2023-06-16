@@ -45,16 +45,11 @@
             transform: translateY(-50%);
 
             &:hover:not(:checked), &:focus-visible:not(:checked) {
-                background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
-                linear-gradient(#57ddff,#c058f3) border-box;
-                border: 1px solid transparent;
-                border-radius: 50%;
+                @include inputBackground(var(--bg-primary), var(--bg-primary));
             }
 
             &:checked {
-                background: linear-gradient(#57ddff,#c058f3) padding-box,
-                linear-gradient(#57ddff,#c058f3) border-box;
-                border: 1px solid transparent;
+                @include inputBackground;
             }
 
             &:checked::after {

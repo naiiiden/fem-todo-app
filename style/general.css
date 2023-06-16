@@ -262,7 +262,6 @@ form .task-input-decorative-circle {
 .tasks-buttons-wrapper li input:hover:not(:checked), .tasks-buttons-wrapper li input:focus-visible:not(:checked) {
   background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box, linear-gradient(#57ddff, #c058f3) border-box;
   border: 1px solid transparent;
-  border-radius: 50%;
 }
 .tasks-buttons-wrapper li input:checked {
   background: linear-gradient(#57ddff, #c058f3) padding-box, linear-gradient(#57ddff, #c058f3) border-box;

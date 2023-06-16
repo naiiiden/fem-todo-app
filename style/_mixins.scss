@@ -10,3 +10,9 @@
     width: clamp(1.375rem, 3vw, 1.5rem);
     height: clamp(1.375rem, 3vw, 1.5rem);
 }
+
+@mixin inputBackground($gradC1: #57ddff, $gradC2: #c058f3) {
+    background: linear-gradient($gradC1, $gradC2) padding-box,
+            linear-gradient(#57ddff,#c058f3) border-box;
+    border: 1px solid transparent;
+}
