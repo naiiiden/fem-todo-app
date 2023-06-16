@@ -4,16 +4,16 @@ form {
 
     #task-input {
         width: 100%;
-        background: $very-dark-desaturated-blue;
+        background: var(--bg-primary);
         border: none;
         border-radius: .25rem;
         padding: 1.125rem 1.375rem 1.125rem 4.25rem;
         font-size: clamp(.875rem, 3vw, 1.125rem);
-        color: $very-light-grayish-blue;
+        color: var(--text-primary);
     }
 
     .task-input-decorative-circle {
-        border: 1px solid $very-dark-grayish-blue2;
+        border: 1px solid var(--input-border);
         border-radius: 50%;
         width: clamp(1.375rem, 3vw, 1.5rem);
         height: clamp(1.375rem, 3vw, 1.5rem);

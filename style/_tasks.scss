@@ -1,6 +1,6 @@
 .error-indicator {
     border-radius: .375rem;
-    background: $very-dark-desaturated-blue;
+    background: var(--bg-primary);
     font-size: clamp(.875rem, 3vw, 1.125rem);
     color: $light-red;
     text-align: center;
@@ -11,7 +11,7 @@
 .empty-list-container {
     @extend .error-indicator;
     padding: 2.25rem;
-    color: $very-light-grayish-blue;
+    color: var(--text-primary);
 
     p {
         margin-top: 2.25rem;
@@ -20,16 +20,16 @@
 
 .tasks-buttons-wrapper {
     border-radius: .375rem;
-    background: $very-dark-desaturated-blue;
+    background: var(--bg-primary);
     font-size: clamp(.875rem, 3vw, 1.125rem);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     li {
         padding: 1.125rem 1.375rem;
-        border-bottom: 1px solid $very-dark-grayish-blue3;
+        border-bottom: 1px solid var(--border-color);
         display: flex;
         align-items: center;
-        color: $very-light-grayish-blue;
+        color: var(--text-primary);
         position: relative;
 
         input {
@@ -37,21 +37,23 @@
             width: clamp(1.375rem, 3vw, 1.625rem);
             height: clamp(1.375rem, 3vw, 1.625rem);
             background: none;
-            border: 1px solid $very-dark-grayish-blue2;
+            border: 1px solid var(--input-border);
             position: absolute;
             top: 50%;
             border-radius: 50%;
             transform: translateY(-50%);
 
             &:hover:not(:checked), &:focus-visible:not(:checked) {
-                background: linear-gradient(#25273c, #25273c) padding-box,
+                background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
                 linear-gradient(#57ddff,#c058f3) border-box;
                 border: 1px solid transparent;
                 border-radius: 50%;
             }
 
             &:checked {
-                background: linear-gradient(#57ddff,#c058f3);
+                background: linear-gradient(#57ddff,#c058f3) padding-box,
+                linear-gradient(#57ddff,#c058f3) border-box;
+                border: 1px solid transparent;
             }
 
             &:checked::after {
@@ -98,7 +100,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: $very-dark-grayish-blue2;
+        color: var(--text-secondary);
 
         button {
             color: inherit;
@@ -106,12 +108,12 @@
             background: none;
 
             &:focus-visible {
-                outline: 2px solid $very-light-grayish-blue;
+                outline: 2px solid var(--focus-primary);
                 outline-offset: 2px;
             }
 
             &:hover {
-                color: $very-light-grayish-blue;
+                color: var(--hover-primary);
             }
         }
 
@@ -123,8 +125,8 @@ fieldset {
     padding: 1.125rem 1.375rem;
     border-radius: .375rem;
     font-size: clamp(.875rem, 3vw, 1.125rem);
-    background: $very-dark-desaturated-blue;
-    color: $very-dark-grayish-blue2;
+    background: var(--bg-primary);
+    color: var(--text-tertiary);
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -140,12 +142,12 @@ fieldset {
     }
 
     input:focus-visible + label {
-        outline: 2px solid $very-light-grayish-blue;
+        outline: 2px solid var(--focus-primary);
         outline-offset: 2px;
     }
 
     input:hover + label {
-        color: $very-light-grayish-blue;
+        color: var(--hover-primary);
         cursor: pointer;
     }
 
