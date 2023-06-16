@@ -76,7 +76,7 @@
 
         input:checked + label {
             text-decoration: line-through;
-            color: $very-dark-grayish-blue2;
+            color: var(--text-checked);
         }
 
         label {
@@ -138,7 +138,7 @@ fieldset {
     }
 
     input:checked + label {
-        color: $bright-blue;
+        color: var(--blue);
     }
 
     input:focus-visible + label {

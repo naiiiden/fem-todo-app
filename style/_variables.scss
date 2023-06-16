@@ -2,25 +2,28 @@
     --bg-primary: hsl(235, 24%, 19%);
     --bg-secondary: hsl(235, 21%, 11%);
     --text-primary: hsl(236, 33%, 92%);
-    --text-secondary: hsl(234, 11%, 52%);
-    --text-tertiary: hsl(234, 11%, 52%);
+    --text-secondary: hsl(232, 11%, 59%);
+    --text-tertiary: hsl(232, 11%, 59%);
     --border-color: hsl(237, 14%, 26%);
     --hover-primary: hsl(236, 33%, 92%);
     --focus-primary: hsl(233, 11%, 84%);
     --input-border: hsl(233, 14%, 35%);
+    --text-checked: hsl(233, 14%, 35%);
+    --blue: hsl(220, 98%, 66%);
 }
 
 [data-theme='light'] {
     --bg-primary: hsl(0, 0%, 98%);
     --bg-secondary: hsl(236, 33%, 92%);
     --text-primary: hsl(237, 14%, 26%);
-    --text-secondary: hsl(252, 3%, 68%);
-    --text-tertiary: hsl(240, 5%, 60%);
+    --text-secondary: hsl(257, 3%, 46%);
+    --text-tertiary: hsl(240, 5%, 46%);
     --border-color: hsl(234, 39%, 85%);
     --hover-primary: hsl(237, 14%, 26%);
     --focus-primary: hsl(235, 24%, 19%);
     --input-border: hsl(233, 11%, 84%);
-
+    --text-checked: hsl(252, 11%, 91%);
+    --blue: hsl(220, 98%, 55%);
 }
 
 $bright-blue: hsl(220, 98%, 61%);
