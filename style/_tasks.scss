@@ -103,16 +103,19 @@
         color: var(--text-secondary);
 
         button {
-            color: inherit;
             border: none;
             background: none;
+            
+            &:not(:disabled) {
+                color: inherit;
+            }
 
             &:focus-visible {
                 outline: 2px solid var(--focus-primary);
                 outline-offset: 2px;
             }
 
-            &:hover {
+            &:hover:not(:disabled) {
                 color: var(--hover-primary);
             }
         }

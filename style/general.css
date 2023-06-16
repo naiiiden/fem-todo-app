@@ -307,15 +307,17 @@ form .task-input-decorative-circle {
   color: var(--text-secondary);
 }
 .tasks-buttons-wrapper .tasks-left-button-container button {
-  color: inherit;
   border: none;
   background: none;
+}
+.tasks-buttons-wrapper .tasks-left-button-container button:not(:disabled) {
+  color: inherit;
 }
 .tasks-buttons-wrapper .tasks-left-button-container button:focus-visible {
   outline: 2px solid var(--focus-primary);
   outline-offset: 2px;
 }
-.tasks-buttons-wrapper .tasks-left-button-container button:hover {
+.tasks-buttons-wrapper .tasks-left-button-container button:hover:not(:disabled) {
   color: var(--hover-primary);
 }
 
