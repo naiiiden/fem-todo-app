@@ -48,7 +48,6 @@ const errorText = document.querySelector('.error-indicator')
 errorText.style.display = 'none'
 
 document.querySelector('form').addEventListener('submit', (e) => {
-    console.log(todoList)
     e.preventDefault()
 
     const taskInput = document.querySelector('#task-input')

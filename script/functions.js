@@ -31,8 +31,6 @@ export function updateTasksAndClearButtonDisableIfEmpty(todoList) {
     document.querySelector('.total-tasks').textContent = `${todoList.length} items left`
     let clearButton = document.querySelector('.clear-completed')
 
-    console.log(todoList.length)
-
     if (todoList.length === 0) {
         clearButton.disabled = true
     } else {
