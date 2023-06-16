@@ -1,17 +1,11 @@
+@import './mixins.scss';
+
 [data-theme='dark'] {
-    header {
-        background-color: hsl(0, 0%, 0%);
-        background-image: url('../images/bg-mobile-dark.jpg');
-        background-size: 100% 100%;
-    }
+    @include background('../images/bg-mobile-dark.jpg');
 }
 
 [data-theme='light'] {
-    header {
-        background-color: hsl(0, 0%, 0%);
-        background-image: url('../images/bg-mobile-light.jpg');
-        background-size: 100% 100%;
-    }
+    @include background('../images/bg-mobile-light.jpg');
 }
 
 header {
@@ -40,19 +34,11 @@ header {
 
 @media screen and (min-width: 600px) {
     [data-theme='dark'] {
-        header {
-            background-color: hsl(0, 0%, 0%);
-            background-image: url('../images/bg-desktop-dark.jpg');
-            background-size: 100% 100%;
-        }
+        @include background('../images/bg-desktop-dark.jpg');
     }
 
     [data-theme='light'] {
-        header {
-            background-color: hsl(0, 0%, 0%);
-            background-image: url('../images/bg-desktop-light.jpg');
-            background-size: 100% 100%;
-        }
+        @include background('../images/bg-desktop-light.jpg');
     }    
 
     header {

@@ -1,0 +1,7 @@
+@mixin background($image) {
+    header {
+        background-color: hsl(0, 0%, 0%);
+        background-image: url($image);
+        background-size: 100% 100%;
+    }
+}
