@@ -204,10 +204,10 @@ form #task-input {
   color: var(--text-primary);
 }
 form .task-input-decorative-circle {
-  border: 1px solid var(--input-border);
-  border-radius: 50%;
   width: clamp(1.375rem, 3vw, 1.5rem);
   height: clamp(1.375rem, 3vw, 1.5rem);
+  border: 1px solid var(--input-border);
+  border-radius: 50%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -250,8 +250,8 @@ form .task-input-decorative-circle {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  width: clamp(1.375rem, 3vw, 1.625rem);
-  height: clamp(1.375rem, 3vw, 1.625rem);
+  width: clamp(1.375rem, 3vw, 1.5rem);
+  height: clamp(1.375rem, 3vw, 1.5rem);
   background: none;
   border: 1px solid var(--input-border);
   position: absolute;

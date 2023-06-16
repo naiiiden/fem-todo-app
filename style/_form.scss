@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 form {
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -13,10 +15,9 @@ form {
     }
 
     .task-input-decorative-circle {
+        @include inputSize;
         border: 1px solid var(--input-border);
         border-radius: 50%;
-        width: clamp(1.375rem, 3vw, 1.5rem);
-        height: clamp(1.375rem, 3vw, 1.5rem);
         position: absolute;
         top: 50%;
         transform: translateY(-50%);

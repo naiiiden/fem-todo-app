@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 .error-indicator {
     border-radius: .375rem;
     background: var(--bg-primary);
@@ -34,8 +36,7 @@
 
         input {
             appearance: none;
-            width: clamp(1.375rem, 3vw, 1.625rem);
-            height: clamp(1.375rem, 3vw, 1.625rem);
+            @include inputSize;
             background: none;
             border: 1px solid var(--input-border);
             position: absolute;
