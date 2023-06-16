@@ -166,6 +166,7 @@ header button {
 }
 form {
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 form #task-input {
   width: 100%;
@@ -194,6 +195,7 @@ form .task-input-decorative-circle {
   color: hsl(0, 80%, 66%);
   text-align: center;
   padding: 1.125rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .empty-list-container {
@@ -208,6 +210,7 @@ form .task-input-decorative-circle {
   border-radius: 0.375rem;
   background: hsl(235, 24%, 19%);
   font-size: clamp(0.875rem, 3vw, 1.125rem);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .tasks-buttons-wrapper li {
   padding: 1.125rem 1.375rem;
@@ -300,6 +303,7 @@ fieldset {
   justify-content: center;
   gap: 1rem;
   font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 fieldset legend {
   display: none;
@@ -336,5 +340,6 @@ fieldset input {
     left: 0;
     right: 0;
     margin: auto;
+    box-shadow: unset;
   }
 }/*# sourceMappingURL=general.css.map */

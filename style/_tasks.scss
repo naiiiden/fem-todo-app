@@ -5,6 +5,7 @@
     color: $light-red;
     text-align: center;
     padding: 1.125rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .empty-list-container {
@@ -21,6 +22,7 @@
     border-radius: .375rem;
     background: $very-dark-desaturated-blue;
     font-size: clamp(.875rem, 3vw, 1.125rem);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     li {
         padding: 1.125rem 1.375rem;
@@ -127,6 +129,7 @@ fieldset {
     justify-content: center;
     gap: 1rem;
     font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     legend {
         display: none;
@@ -169,5 +172,6 @@ fieldset {
         left: 0;
         right: 0;
         margin: auto;
+        box-shadow: unset;
     }
 }
