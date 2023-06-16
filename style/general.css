@@ -115,9 +115,12 @@ li:active {
   cursor: move;
 }
 
-header {
+[data-theme=dark] header {
   background: url("../images/bg-mobile-dark.jpg");
   background-size: cover;
+}
+
+header {
   padding: 2.5rem 1.5rem;
   height: 13.5rem;
 }
@@ -139,9 +142,11 @@ header button {
 }
 
 @media screen and (min-width: 600px) {
-  header {
+  [data-theme=dark] header {
     background: url("../images/bg-desktop-dark.jpg");
     background-size: cover;
+  }
+  header {
     padding: 5rem 3rem;
     height: 17.5rem;
   }
