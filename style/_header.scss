@@ -1,7 +1,14 @@
 [data-theme='dark'] {
     header {
         background: url('../images/bg-mobile-dark.jpg');
-        background-size: cover;
+        background-size: 100% 100%;
+    }
+}
+
+[data-theme='light'] {
+    header {
+        background: url('../images/bg-mobile-light.jpg');
+        background-size: 100% 100%;
     }
 }
 
@@ -33,9 +40,16 @@ header {
     [data-theme='dark'] {
         header {
             background: url('../images/bg-desktop-dark.jpg');
-            background-size: cover;
+            background-size: 100% 100%;
         }
     }
+
+    [data-theme='light'] {
+        header {
+            background: url('../images/bg-desktop-light.jpg');
+            background-size: 100% 100%;
+        }
+    }    
 
     header {
         padding: 5rem 3rem;

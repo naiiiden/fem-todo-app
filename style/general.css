@@ -117,7 +117,12 @@ li:active {
 
 [data-theme=dark] header {
   background: url("../images/bg-mobile-dark.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
+}
+
+[data-theme=light] header {
+  background: url("../images/bg-mobile-light.jpg");
+  background-size: 100% 100%;
 }
 
 header {
@@ -144,7 +149,11 @@ header button {
 @media screen and (min-width: 600px) {
   [data-theme=dark] header {
     background: url("../images/bg-desktop-dark.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
+  }
+  [data-theme=light] header {
+    background: url("../images/bg-desktop-light.jpg");
+    background-size: 100% 100%;
   }
   header {
     padding: 5rem 3rem;
