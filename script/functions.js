@@ -38,7 +38,7 @@ export function updateTasksAndClearButtonDisableIfEmpty(todoList) {
     }
 }
 
-export function renderTask(task, tasksContainer) {
+export function renderTask(task, tasksContainer, isNewTask) {
   const taskElement = document.createElement('li')
   taskElement.id = `task-${task.id}`
   taskElement.dataset.key = task.id
@@ -47,5 +47,8 @@ export function renderTask(task, tasksContainer) {
     <input type='checkbox' id='task-id-${task.id}' class='complete-task-checkbox' ${task.completed ? 'checked' : ''} aria-label='Mark "${task.task}" as ${task.completed ? "incomplete" : "complete"}' aria-live='polite'/>
     <label for='task-id-${task.id}'>${task.task}</label>
     <button class='delete-task-button' aria-label='Delete task: "${task.task}"'></button>`
+  if (isNewTask) {
+    taskElement.classList.add('animation-submit');
+  }
   tasksContainer.appendChild(taskElement)
 }

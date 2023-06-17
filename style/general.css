@@ -246,15 +246,27 @@ form .task-input-decorative-circle {
   color: var(--text-primary);
   position: relative;
 }
+.tasks-buttons-wrapper li.animation-submit {
+  animation: submit 0.5s;
+}
+@keyframes submit {
+  0% {
+    transform: translateX(200px);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .tasks-buttons-wrapper li.animation-delete {
-  animation: delete 0.75s ease-out;
+  animation: delete 0.5s;
 }
 @keyframes delete {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(300px);
+    transform: translateX(200px);
     opacity: 0.1;
   }
 }

@@ -33,9 +33,24 @@
         align-items: center;
         color: var(--text-primary);
         position: relative;
-        
+
+        &.animation-submit {
+            animation: submit .5s;
+
+            @keyframes submit {
+                0% {
+                    transform: translateX(200px);
+                    opacity: .1;
+                }
+                
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        }
+
         &.animation-delete {
-            animation: delete .75s ease-out;
+            animation: delete .5s;
     
             @keyframes delete {
                 0% {
@@ -43,7 +58,7 @@
                 }
                 
                 100% {
-                    transform: translateX(300px);
+                    transform: translateX(200px);
                     opacity: 0.1;
                 }
             }

@@ -66,7 +66,10 @@ document.querySelector('form').addEventListener('submit', (e) => {
         let newTask = new TodoTask(taskInput.value, false, ++taskId)
         todoList.push(newTask)
         localStorage.setItem('todoList', JSON.stringify(todoList))
-        renderTask(newTask, tasksContainer)
+        renderTask(newTask, tasksContainer, true)
+        setTimeout(() => {
+            tasksContainer.querySelector('.animation-submit').classList.remove('animation-submit')
+        }, 500)
         taskInput.value = ''
         document.querySelector('#all').checked = true
         updateTasksAndClearButtonDisableIfEmpty(todoList)
@@ -89,7 +92,7 @@ tasksContainer.addEventListener('click', (e) => {
         e.target.parentNode.classList.add('animation-delete')
         setTimeout(() => {
             e.target.parentNode.remove()
-        }, 700)
+        }, 500)
         updateTasksAndClearButtonDisableIfEmpty(todoList)
         noTasksDisplay(todoList)
     }
