@@ -1,6 +1,6 @@
 @import './mixins.scss';
 
-.empty-list-container {
+.error-indicator {
     border-radius: .375rem;
     background: var(--bg-primary);
     font-size: clamp(.875rem, 3vw, 1.125rem);
@@ -9,6 +9,10 @@
     padding: 1.125rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: .2s;
+}
+
+.empty-list-container {
+    @extend .error-indicator;
     padding: 2.25rem;
     color: var(--text-primary);
     transition: .2s;
