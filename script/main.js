@@ -86,7 +86,10 @@ tasksContainer.addEventListener('click', (e) => {
         const taskToDeleteKey = parseInt(e.target.parentNode.dataset.key)
         todoList = todoList.filter(task => task.id !== taskToDeleteKey)
         localStorage.setItem('todoList', JSON.stringify(todoList))
-        e.target.parentNode.remove()
+        e.target.parentNode.classList.add('animation-delete')
+        setTimeout(() => {
+            e.target.parentNode.remove()
+        }, 700)
         updateTasksAndClearButtonDisableIfEmpty(todoList)
         noTasksDisplay(todoList)
     }

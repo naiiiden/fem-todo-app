@@ -246,6 +246,18 @@ form .task-input-decorative-circle {
   color: var(--text-primary);
   position: relative;
 }
+.tasks-buttons-wrapper li.animation-delete {
+  animation: delete 0.75s ease-out;
+}
+@keyframes delete {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(300px);
+    opacity: 0.1;
+  }
+}
 .tasks-buttons-wrapper li input {
   -webkit-appearance: none;
      -moz-appearance: none;
