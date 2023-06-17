@@ -44,9 +44,6 @@ document.querySelector('fieldset').addEventListener('change', (e) => {
     }
 })
 
-const errorText = document.querySelector('.error-indicator')
-errorText.style.display = 'none'
-
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -75,11 +72,9 @@ document.querySelector('form').addEventListener('submit', (e) => {
         updateTasksAndClearButtonDisableIfEmpty(todoList)
         noTasksDisplay(todoList)
     } else {
-        errorText.style.display = 'block'
-        errorText.textContent = 'task text cannot be empty'
+        taskInput.classList.add('indicate-error')
         setTimeout(() => {
-            errorText.style.display = 'none'
-            errorText.textContent = ''
+            taskInput.classList.remove('indicate-error')
         }, 3000)
     }
 })

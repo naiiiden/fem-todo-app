@@ -217,7 +217,7 @@ form .task-input-decorative-circle {
   transition: 0.2s;
 }
 
-.error-indicator, .empty-list-container {
+.empty-list-container {
   border-radius: 0.375rem;
   background: var(--bg-primary);
   font-size: clamp(0.875rem, 3vw, 1.125rem);
@@ -226,9 +226,6 @@ form .task-input-decorative-circle {
   padding: 1.125rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: 0.2s;
-}
-
-.empty-list-container {
   padding: 2.25rem;
   color: var(--text-primary);
   transition: 0.2s;
