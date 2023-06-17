@@ -205,6 +205,11 @@ form #task-input {
   color: var(--text-primary);
   transition: 0.2s;
 }
+form #task-input.input-error {
+  outline: 4px solid var(--error);
+  color: var(--error);
+  transition: 0.2s;
+}
 form .task-input-decorative-circle {
   width: clamp(1.375rem, 3vw, 1.5rem);
   height: clamp(1.375rem, 3vw, 1.5rem);
@@ -258,7 +263,7 @@ form .task-input-decorative-circle {
 }
 @keyframes submit {
   0% {
-    transform: translateX(200px);
+    transform: translateX(150px);
     opacity: 0.1;
   }
   100% {
@@ -266,15 +271,25 @@ form .task-input-decorative-circle {
   }
 }
 .tasks-buttons-wrapper li.animation-delete {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
   animation: delete 0.5s;
 }
 @keyframes delete {
   0% {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(200px);
+  50% {
     opacity: 0.1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(150px);
+    opacity: 0;
   }
 }
 .tasks-buttons-wrapper li input {

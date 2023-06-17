@@ -43,7 +43,7 @@
 
             @keyframes submit {
                 0% {
-                    transform: translateX(200px);
+                    transform: translateX(150px);
                     opacity: .1;
                 }
                 
@@ -54,16 +54,26 @@
         }
 
         &.animation-delete {
+            user-select: none;
+            pointer-events: none;
             animation: delete .5s;
     
             @keyframes delete {
                 0% {
                     transform: translateX(0);
                 }
+
+                50% {
+                    opacity: 0.1;
+                }
+
+                75% {
+                    opacity: 0;
+                }
                 
                 100% {
-                    transform: translateX(200px);
-                    opacity: 0.1;
+                    transform: translateX(150px);
+                    opacity: 0;
                 }
             }
         }

@@ -13,6 +13,12 @@ form {
         font-size: clamp(.875rem, 3vw, 1.125rem);
         color: var(--text-primary);
         transition: .2s;
+
+        &.input-error {
+            outline: 4px solid var(--error);
+            color: var(--error);
+            transition: .2s;
+        }
     }
 
     .task-input-decorative-circle {
