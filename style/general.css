@@ -152,6 +152,7 @@ li:active {
 header {
   padding: 2.5rem 1.5rem;
   height: 13.5rem;
+  transition: 0.3s;
 }
 header div {
   display: flex;
@@ -202,6 +203,7 @@ form #task-input {
   padding: 1.125rem 1.375rem 1.125rem 4.25rem;
   font-size: clamp(0.875rem, 3vw, 1.125rem);
   color: var(--text-primary);
+  transition: 0.2s;
 }
 form .task-input-decorative-circle {
   width: clamp(1.375rem, 3vw, 1.5rem);
@@ -212,6 +214,7 @@ form .task-input-decorative-circle {
   top: 50%;
   transform: translateY(-50%);
   left: 1.5rem;
+  transition: 0.2s;
 }
 
 .error-indicator, .empty-list-container {
@@ -222,11 +225,13 @@ form .task-input-decorative-circle {
   text-align: center;
   padding: 1.125rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.2s;
 }
 
 .empty-list-container {
   padding: 2.25rem;
   color: var(--text-primary);
+  transition: 0.2s;
 }
 .empty-list-container p {
   margin-top: 2.25rem;
@@ -237,6 +242,7 @@ form .task-input-decorative-circle {
   background: var(--bg-primary);
   font-size: clamp(0.875rem, 3vw, 1.125rem);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper li {
   padding: 1.125rem 1.375rem;
@@ -245,6 +251,7 @@ form .task-input-decorative-circle {
   align-items: center;
   color: var(--text-primary);
   position: relative;
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper li.animation-submit {
   animation: submit 0.5s;
@@ -282,10 +289,12 @@ form .task-input-decorative-circle {
   top: 50%;
   border-radius: 50%;
   transform: translateY(-50%);
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper li input:hover:not(:checked), .tasks-buttons-wrapper li input:focus-visible:not(:checked) {
   background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box, linear-gradient(#57ddff, #c058f3) border-box;
   border: 1px solid transparent;
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper li input:checked {
   background: linear-gradient(#57ddff, #c058f3) padding-box, linear-gradient(#57ddff, #c058f3) border-box;
@@ -304,10 +313,12 @@ form .task-input-decorative-circle {
   height: 100%;
   background: url("../images/icon-check.svg") no-repeat;
   background-position: center center;
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper li input:checked + label {
   text-decoration: line-through;
   color: var(--text-checked);
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper li label {
   width: 100%;
@@ -328,6 +339,7 @@ form .task-input-decorative-circle {
   align-items: center;
   justify-content: space-between;
   color: var(--text-secondary);
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper .tasks-left-button-container button {
   border: none;
@@ -336,13 +348,16 @@ form .task-input-decorative-circle {
 }
 .tasks-buttons-wrapper .tasks-left-button-container button:not(:disabled) {
   color: inherit;
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper .tasks-left-button-container button:focus-visible {
   outline: 2px solid var(--focus-primary);
   outline-offset: 2px;
+  transition: 0.2s;
 }
 .tasks-buttons-wrapper .tasks-left-button-container button:hover:not(:disabled) {
   color: var(--hover-primary);
+  transition: 0.2s;
 }
 
 fieldset {
@@ -357,20 +372,24 @@ fieldset {
   gap: 1rem;
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.2s;
 }
 fieldset legend {
   display: none;
 }
 fieldset input:checked + label {
   color: var(--blue);
+  transition: 0.2s;
 }
 fieldset input:focus-visible + label {
   outline: 2px solid var(--focus-primary);
   outline-offset: 2px;
+  transition: 0.2s;
 }
 fieldset input:hover + label {
   color: var(--hover-primary);
   cursor: pointer;
+  transition: 0.2s;
 }
 fieldset input {
   position: absolute;

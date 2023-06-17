@@ -48,7 +48,7 @@ export function renderTask(task, tasksContainer, isNewTask) {
     <label for='task-id-${task.id}'>${task.task}</label>
     <button class='delete-task-button' aria-label='Delete task: "${task.task}"'></button>`
   if (isNewTask) {
-    taskElement.classList.add('animation-submit');
+    taskElement.classList.add('animation-submit')
   }
   tasksContainer.appendChild(taskElement)
 }

@@ -12,6 +12,7 @@ form {
         padding: 1.125rem 1.375rem 1.125rem 4.25rem;
         font-size: clamp(.875rem, 3vw, 1.125rem);
         color: var(--text-primary);
+        transition: .2s;
     }
 
     .task-input-decorative-circle {
@@ -22,5 +23,6 @@ form {
         top: 50%;
         transform: translateY(-50%);
         left: 1.5rem;
+        transition: .2s;
     }
 }
