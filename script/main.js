@@ -56,7 +56,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         if (todoList.some(task => task.task === taskInput.value)) {
             errorText.style.display = 'block'
             taskInput.classList.add('input-error')
-            errorText.textContent = 'cannot add duplicate tasks'
+            errorText.textContent = 'Cannot add duplicate tasks'
             setTimeout(() => {
                 errorText.style.display = 'none'
                 taskInput.classList.remove('input-error')
@@ -79,7 +79,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     } else {
         errorText.style.display = 'block'
         taskInput.classList.add('input-error')
-        errorText.textContent = 'task text cannot be empty'
+        errorText.textContent = 'Task text cannot be empty'
         setTimeout(() => {
             errorText.style.display = 'none'
             taskInput.classList.remove('input-error')

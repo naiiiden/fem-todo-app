@@ -15,11 +15,11 @@ export function noTasksDisplay(todoList) {
 
   if (filteredTasks.length === 0) {
     if (activeRadioBtn.checked) {
-      emptyTaskList.textContent = 'No active tasks'
+      emptyTaskList.textContent = 'You have no active tasks at the moment.'
     } else if (completeRadioBtn.checked) {
-      emptyTaskList.textContent = 'No completed tasks'
+      emptyTaskList.textContent = 'You have no completed tasks yet.'
     } else {
-      emptyTaskList.textContent = 'No tasks'
+      emptyTaskList.textContent = 'Your tasks list is empty.'
     }
     emptyListContainer.style.display = 'block'
   } else {
