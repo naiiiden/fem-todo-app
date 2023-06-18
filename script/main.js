@@ -96,6 +96,7 @@ tasksContainer.addEventListener('click', (e) => {
         localStorage.setItem('todoList', JSON.stringify(todoList))
         e.target.parentNode.classList.add('animation-delete')
         document.querySelector('[role="status"]').textContent = `"${e.target.parentNode.querySelector('label').textContent}" deleted`
+        document.querySelector('h1').focus()
         setTimeout(() => {
             e.target.parentNode.remove()
         }, 500)
