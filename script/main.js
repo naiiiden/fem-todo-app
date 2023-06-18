@@ -69,6 +69,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
         todoList.push(newTask)
         localStorage.setItem('todoList', JSON.stringify(todoList))
         renderTask(newTask, tasksContainer, true)
+        document.querySelector('[role="status"]').textContent = `"${taskInput.value}" added`
         setTimeout(() => {
             tasksContainer.querySelector('.animation-submit').classList.remove('animation-submit')
         }, 500)
