@@ -100,7 +100,13 @@ tasksContainer.addEventListener('click', (e) => {
             e.target.parentNode.remove()
         }, 500)
         updateTasksAndClearButtonDisableIfEmpty(todoList)
-        noTasksDisplay(todoList)
+        if (todoList.length === 0) {
+            setTimeout(() => {
+                noTasksDisplay(todoList)
+            }, 500)
+        } else {
+            noTasksDisplay(todoList)
+        }
     }
 })
 
