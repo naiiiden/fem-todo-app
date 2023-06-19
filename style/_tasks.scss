@@ -37,6 +37,11 @@
         color: var(--text-primary);
         position: relative;
         transition: .2s;
+        cursor: pointer;
+
+        &:active {
+            cursor: move;
+        }
 
         &.animation-submit {
             animation: submit .5s;

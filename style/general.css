@@ -129,14 +129,6 @@ main {
     padding: 0 3rem;
   }
 }
-li {
-  cursor: pointer;
-}
-
-li:active {
-  cursor: move;
-}
-
 [data-theme=dark] header {
   background-color: hsl(0, 0%, 0%);
   background-image: url("../images/bg-mobile-dark.jpg");
@@ -257,6 +249,10 @@ form .task-input-decorative-circle {
   color: var(--text-primary);
   position: relative;
   transition: 0.2s;
+  cursor: pointer;
+}
+.tasks-buttons-wrapper li:active {
+  cursor: move;
 }
 .tasks-buttons-wrapper li.animation-submit {
   animation: submit 0.5s;
